@@ -1,5 +1,6 @@
 package com.is;
 
+import com.EveTuPart.Tabs.ModCreativeTab;
 import com.is.server.data.ServerDelphiManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -27,4 +28,5 @@ public final class ISConst {
         throw new NotImplementedException();
     }
 
+    public static final ModCreativeTab modCreativeTab = new ModCreativeTab();
 }
