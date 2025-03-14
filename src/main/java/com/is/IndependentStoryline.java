@@ -1,5 +1,6 @@
 package com.is;
 
+import com.EveTuPart.Items.ModItems;
 import com.is.client.event_listeners.ClientEventListener;
 import com.is.client.gui.OverlayOverrides;
 import com.is.server.event_listeners.ServerEventListener;
@@ -23,12 +24,15 @@ public class IndependentStoryline {
     private ServerEventListener.ModEvents modListener;
 
     @SuppressWarnings("removal") // >:D
+    // ;(
     public IndependentStoryline() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         if (Environment.get().getDist().isClient()) new Client(eventBus);
 
         eventBus.register((modListener = new ServerEventListener.ModEvents()));
         MinecraftForge.EVENT_BUS.register((forgeListener = new ServerEventListener()));
+
+
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -49,11 +53,13 @@ public class IndependentStoryline {
 
             modEventBus.register((modListener = new ClientEventListener.ModEvents()));
             MinecraftForge.EVENT_BUS.register((forgeListener = new ClientEventListener()));
+            ModItems.ITEMS.register(modEventBus);
         }
 
         public void commonSetup(FMLCommonSetupEvent event) {
             overlayOverrides = new OverlayOverrides(modEventBus);
         }
+
 
     }
 }
