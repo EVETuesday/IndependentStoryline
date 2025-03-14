@@ -23,7 +23,7 @@ public final class ServerEventListener {
 
     public void blockDestroyedEvent(BlockEvent.BreakEvent event) {
         if (event.getPlayer() instanceof ServerPlayer serverPlayer) {
-            //Todo
+
         }
     }
 
