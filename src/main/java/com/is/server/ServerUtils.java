@@ -6,6 +6,8 @@ import org.jetbrains.annotations.Nullable;
 
 public final class ServerUtils {
 
+    private ServerUtils() {}
+
     @Nullable
     public static MinecraftServer getCurrentServer() {
         return ServerEventListener.getServer();

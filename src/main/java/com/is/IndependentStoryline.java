@@ -1,5 +1,8 @@
 package com.is;
 
+import com.is.client.ModKeyBinds;
+import com.is.client.data.ClientAbilityManager;
+import com.is.client.data.ClientDelphiManager;
 import com.is.client.event_listeners.ClientEventListener;
 import com.is.client.gui.OverlayOverrides;
 import com.is.server.event_listeners.ServerEventListener;
@@ -53,6 +56,9 @@ public class IndependentStoryline {
 
         public void commonSetup(FMLCommonSetupEvent event) {
             overlayOverrides = new OverlayOverrides(modEventBus);
+            ClientDelphiManager.initialize();
+            ClientAbilityManager.initialize();
+            ModKeyBinds.init();
         }
 
     }
