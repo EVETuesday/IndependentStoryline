@@ -1,0 +1,24 @@
+{
+  "is.gui.delphi_shop.name": "Delphi Shop",
+  "is.gui.delphi_shop.button.balance": "Balance: %s",
+  "is.gui.delphi_shop.button.purchased": "Purchased",
+
+  "is.gui.delphi_shop.button.exception.already_purchased": "You have already purchased this §o§dability§r!",
+  "is.gui.delphi_shop.button.exception.not_enough_delphi": "Not enough Delphies for this §o§dability§r!",
+
+  "is.gui.delphi_shop.filters.coal": "Coal ore",
+  "is.gui.delphi_shop.filters.copper": "Copper ore",
+  "is.gui.delphi_shop.filters.iron": "Iron ore",
+  "is.gui.delphi_shop.filters.gold": "Gold ore",
+  "is.gui.delphi_shop.filters.diamond": "Diamond ore",
+  "is.gui.delphi_shop.filters.emerald": "Emerald ore",
+
+  "is.abilities.speed.name": "Speed",
+  "is.abilities.speed.description": "Increases players movement speed.",
+
+  "is.abilities.strength.name": "Strength",
+  "is.abilities.strength.description": "Increases players attack damage.",
+
+  "is.abilities.agility.name": "Agility",
+  "is.abilities.agility.description": "Increases something..."
+}

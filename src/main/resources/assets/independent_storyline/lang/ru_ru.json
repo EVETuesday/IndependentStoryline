@@ -1,0 +1,24 @@
+{
+  "is.gui.delphi_shop.name": "Прокачка",
+  "is.gui.delphi_shop.button.balance": "Баланс: %s",
+  "is.gui.delphi_shop.button.purchased": "Куплено",
+
+  "is.gui.delphi_shop.button.exception.already_purchased": "Вы уже купили §o§dСпособность§r!",
+  "is.gui.delphi_shop.button.exception.not_enough_delphi": "Недостаточно Дельфов для покупки этой §o§dСпособности§r!",
+
+  "is.gui.delphi_shop.filters.coal": "Угольная руда",
+  "is.gui.delphi_shop.filters.copper": "Медная руда",
+  "is.gui.delphi_shop.filters.iron": "Железная руда",
+  "is.gui.delphi_shop.filters.gold": "Золотая руда",
+  "is.gui.delphi_shop.filters.diamond": "Алмазная руда",
+  "is.gui.delphi_shop.filters.emerald": "Изумрудная руда",
+
+  "is.abilities.speed.name": "Скорость",
+  "is.abilities.speed.description": "Увеличивает скорость передвижения игрока",
+
+  "is.abilities.strength.name": "Сила",
+  "is.abilities.strength.description": "Увеличивает силу игрока",
+
+  "is.abilities.agility.name": "Ловкость",
+  "is.abilities.agility.description": "Увеличиает что-то..."
+}
