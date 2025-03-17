@@ -1,17 +1,14 @@
 package com.is.server.data;
 
-import com.is.capabilities.ModCapabilities;
-import com.is.capabilities.delphi.IDelphiCapability;
 import com.is.data.IDelphiManager;
-import com.is.network.NetworkHandler;
-import com.is.network.packets.S2CSyncBalancePacket;
-import com.mojang.logging.LogUtils;
+import com.is.server.ServerUtils;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.network.PacketDistributor;
-import org.slf4j.Logger;
-
-import java.util.Optional;
+import net.minecraft.world.scores.Objective;
+import net.minecraft.world.scores.Scoreboard;
+import net.minecraft.world.scores.criteria.ObjectiveCriteria;
 
 public class ServerDelphiManager implements IDelphiManager {
 
@@ -25,37 +22,47 @@ public class ServerDelphiManager implements IDelphiManager {
         return manager;
     }
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+    protected final Scoreboard scoreboard;
+    protected final Objective scoreboardObjective;
 
-    private ServerDelphiManager() {}
+    public ServerDelphiManager() {
+        MinecraftServer minecraftServer = ServerUtils.getCurrentServer();
+        if (minecraftServer == null) throw new RuntimeException("DelphiManager has tried to initialize before the server");
+
+        scoreboard = minecraftServer.getScoreboard();
+
+        Objective objective = scoreboard.getObjective("delphi");
+        if (objective == null) {
+            objective = scoreboard.addObjective("delphi", ObjectiveCriteria.DUMMY, Component.empty(), ObjectiveCriteria.RenderType.INTEGER);
+        }
+        scoreboardObjective = objective;
+    }
+
+    @Override
+    public double withdraw(Player player, double amount, boolean simulate) {
+        return transfer(player, -amount, simulate);
+    }
+
+    @Override
+    public double transfer(Player player, double amount, boolean simulate) {
+        double balance = getBalance(player);
+        double newBalance = Math.max(balance + amount, 0);
+        if (!simulate) setDelphi(player, newBalance);
+        return Math.abs(balance - newBalance);
+    }
 
     @Override
     public double getBalance(Player player) {
-        Optional<IDelphiCapability> capability = player.getCapability(ModCapabilities.DELPHI).resolve();
-        if (capability.isPresent()) {
-            LOGGER.debug("Successfully got players balance info");
-            return capability.get().getBalance();
-        } else {
-            LOGGER.warn("No capability was found for this player (at getBalance)");
-            return 0.0;
-        }
+        return scoreboard.getOrCreatePlayerScore(player.getStringUUID(), scoreboardObjective).getScore();
     }
 
     @Override
     public void setDelphi(Player player, double amount) {
-        Optional<IDelphiCapability> capability = player.getCapability(ModCapabilities.DELPHI).resolve();
-        capability.ifPresentOrElse((cap) -> {
-            cap.setBalance(amount);
-            syncPlayer((ServerPlayer) player, amount);
-            LOGGER.debug("Updated players balance to {}", amount);
-        }, () -> LOGGER.warn("No capability attached!"));
+        // todo replace with capability
+        scoreboard.getOrCreatePlayerScore(player.getStringUUID(), scoreboardObjective).setScore((int) amount);
     }
 
-    public void syncPlayer(ServerPlayer player) {
-        syncPlayer(player, getBalance(player));
-    }
+    protected void syncPlayer(ServerPlayer player) {
 
-    protected void syncPlayer(ServerPlayer player, double amount) {
-        NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new S2CSyncBalancePacket(amount));
     }
 }

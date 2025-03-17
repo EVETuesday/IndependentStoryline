@@ -4,16 +4,9 @@ import net.minecraft.world.entity.player.Player;
 
 public interface IDelphiManager {
 
-    default double withdraw(Player player, double amount, boolean simulate) {
-        return transfer(player, -amount, simulate);
-    }
+    double withdraw(Player player, double amount, boolean simulate);
 
-    default double transfer(Player player, double amount, boolean simulate) {
-        double balance = getBalance(player);
-        double newBalance = Math.max(balance + amount, 0);
-        if (!simulate) setDelphi(player, newBalance);
-        return Math.abs(balance - newBalance);
-    }
+    double transfer(Player player, double amount, boolean simulate);
 
     double getBalance(Player player);
 
