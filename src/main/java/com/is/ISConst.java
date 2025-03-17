@@ -1,5 +1,6 @@
 package com.is;
 
+import com.EveTuPart.Tabs.ModCreativeTab;
 import com.is.data.DelphiForBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -28,5 +29,6 @@ public final class ISConst {
         }
         return 0.0d;
     }
+    public static final ModCreativeTab modCreativeTab = new ModCreativeTab();
 
 }

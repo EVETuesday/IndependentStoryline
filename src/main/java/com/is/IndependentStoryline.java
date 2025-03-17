@@ -1,5 +1,6 @@
 package com.is;
 
+import com.EveTuPart.Items.ModItems;
 import com.is.client.ModKeyBinds;
 import com.is.client.data.ClientAbilityManager;
 import com.is.client.data.ClientDelphiManager;
@@ -52,6 +53,7 @@ public class IndependentStoryline {
 
             modEventBus.register((modListener = new ClientEventListener.ModEvents()));
             MinecraftForge.EVENT_BUS.register((forgeListener = new ClientEventListener()));
+            ModItems.ITEMS.register(modEventBus);
         }
 
         public void commonSetup(FMLCommonSetupEvent event) {
