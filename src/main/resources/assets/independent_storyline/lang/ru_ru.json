@@ -14,13 +14,13 @@
   "is.gui.delphi_shop.filters.emerald": "Изумрудная руда",
 
   "is.abilities.speed.name": "Скорость",
-  "is.abilities.speed.description": "Увеличивает скорость передвижения игрока",
+  "is.abilities.speed.description": "Увеличивает скорость передвижения игрока.",
 
   "is.abilities.strength.name": "Сила",
-  "is.abilities.strength.description": "Увеличивает силу игрока",
+  "is.abilities.strength.description": "Увеличивает силу атаки игрока.",
 
   "is.abilities.agility.name": "Ловкость",
-  "is.abilities.agility.description": "Увеличиает что-то...",
+  "is.abilities.agility.description": "Увеличиает скорость копания игрока.",
 
   "item.independent_storyline.legendary_sword": "Легендарный меч",
   "itemGroup.IndependentStorylineTab": "НСЛ"

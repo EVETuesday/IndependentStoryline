@@ -22,7 +22,7 @@ public class SpeedAbility extends AbstractAbility {
 
     @Override
     public void tick(ServerPlayer player) {
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1, 3, true, false));
+        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 4, 3, true, false));
     }
 
 }

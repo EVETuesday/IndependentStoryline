@@ -50,7 +50,7 @@ public class AbilitiesShopScreen extends Screen {
     protected static final int SCREEN_LABEL_AREA_WIDTH = 135;
     protected static final int SCREEN_LABEL_AREA_HEIGHT = 32;
 
-    protected static final int BASE_COLOR = 0xFF76BAC9;
+    public static final int BASE_COLOR = 0xFF76BAC9;
 
     protected int imageWidth = 350;
     protected int imageHeight = 256;
@@ -68,6 +68,7 @@ public class AbilitiesShopScreen extends Screen {
 
     @Override
     protected void init() {
+        this.selectedUpgradeButton = null;
         this.leftPos = (this.width - this.imageWidth) / 2;
         this.topPos = (this.height - this.imageHeight) / 2;
         //upgrade buttons
@@ -147,7 +148,7 @@ public class AbilitiesShopScreen extends Screen {
                             y + font.lineHeight / 2.0f, BASE_COLOR
                     );
                     font.draw(poseStack, I18n.get(delphiForBlocks.translateName),
-                            leftPos + DESCRIPTION_AREA_START_X + 25, y + font.lineHeight / 2.0f, BASE_COLOR
+                            leftPos + DESCRIPTION_AREA_START_X + 20.3f, y + font.lineHeight / 2.0f, BASE_COLOR
                     );
                     y += 22;
                 }
@@ -211,9 +212,9 @@ public class AbilitiesShopScreen extends Screen {
             poseStack.translate(3.0F * this.animationTimeline.getPercentage(), 0.0F, 0.0F);
             float mulColor = 1.0F;
 
-            if (!this.active) {
-                RenderSystem.setShaderColor(0.4F, 0.4F, 0.4F, 1.0F);
-                mulColor = 0.4F;
+            if (this.purchased) {
+                mulColor = 0.7F;
+                RenderSystem.setShaderColor(mulColor, mulColor, mulColor, 1.0F);
             }
 
             fill(poseStack, this.x, this.y + NAME_LABEL_BGR_HEIGHT + 1,

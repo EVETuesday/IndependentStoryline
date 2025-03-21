@@ -1,6 +1,7 @@
 package com.is.capabilities.abilities;
 
 import com.is.data.DelphiAbilityType;
+import com.is.data.DelphiItemType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 
@@ -19,5 +20,9 @@ public interface IAbilityCapability  extends INBTSerializable<CompoundTag> {
     default boolean isAbilityUnlocked(DelphiAbilityType abilityType) {
         return getAbilities().contains(abilityType);
     }
+
+    void setCurrentItem(DelphiItemType delphiItemType);
+
+    DelphiItemType getCurrentItem();
 
 }

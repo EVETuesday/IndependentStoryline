@@ -14,4 +14,7 @@ public interface IAbilityManager {
 
     void setAbilities(Player player, List<DelphiAbilityType> abilities);
 
+    void setCurrentItem(Player player, DelphiItemType item);
+
+    DelphiItemType getCurrentItem(Player player);
 }

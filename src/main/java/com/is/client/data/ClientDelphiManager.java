@@ -18,6 +18,7 @@ public class ClientDelphiManager implements IDelphiManager {
     private ClientDelphiManager() {}
 
     private double balance;
+    private double networth;
 
     @Override
     public double getBalance(Player player) {
@@ -25,7 +26,17 @@ public class ClientDelphiManager implements IDelphiManager {
     }
 
     @Override
-    public void setDelphi(Player player, double amount) {
+    public void setBalance(Player player, double amount) {
         balance = amount;
+    }
+
+    @Override
+    public double getNetworth(Player player) {
+        return networth;
+    }
+
+    @Override
+    public void setNetworth(Player player, double amount) {
+        networth = amount;
     }
 }

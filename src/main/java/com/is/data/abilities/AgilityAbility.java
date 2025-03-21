@@ -22,7 +22,7 @@ public class AgilityAbility extends AbstractAbility {
 
     @Override
     public void tick(ServerPlayer player) {
-        player.addEffect(new MobEffectInstance(MobEffects.JUMP, 1, 3, true, false));
+        player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 4, 3, true, false));
     }
 
 }

@@ -9,4 +9,8 @@ public interface IDelphiCapability extends INBTSerializable<CompoundTag> {
 
     void setBalance(double value);
 
+    double getNetworth();
+
+    void setNetworth(double value);
+
 }

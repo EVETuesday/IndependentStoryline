@@ -4,6 +4,7 @@ import com.is.ISConst;
 import com.is.capabilities.ModCapabilities;
 import com.is.capabilities.abilities.AbilityCapabilityImpl;
 import com.is.capabilities.delphi.DelphiCapabilityImpl;
+import com.is.events.DelphiBalanceChangedEvent;
 import com.is.network.NetworkHandler;
 import com.is.server.data.ServerAbilityManager;
 import com.is.server.data.ServerDelphiManager;
@@ -54,13 +55,13 @@ public final class ServerEventListener {
     public void clonePlayerEvent(PlayerEvent.Clone event) {
         if (event.isWasDeath() && event.getEntity() instanceof ServerPlayer player &&
                 event.getOriginal() instanceof ServerPlayer original) {
-            if (original.getPersistentData().contains(DelphiCapabilityImpl.NBT_KEY)) {
+            if (original.getPersistentData().contains(DelphiCapabilityImpl.NBT_KEY_NETWORTH)) {
                 LOGGER.debug("Cloning players delphi capability {}", original.getPersistentData());
                 player.getCapability(ModCapabilities.DELPHI).resolve().ifPresentOrElse((cap) -> {
-                    cap.deserializeNBT((CompoundTag) original.getPersistentData().get(DelphiCapabilityImpl.NBT_KEY));
+                    cap.deserializeNBT((CompoundTag) original.getPersistentData().get(DelphiCapabilityImpl.NBT_KEY_NETWORTH));
                 }, () -> LOGGER.warn("No delphi cap attached on clone"));
                 player.getCapability(ModCapabilities.ABILITIES).resolve().ifPresentOrElse((cap) -> {
-                    cap.deserializeNBT((CompoundTag) original.getPersistentData().get(AbilityCapabilityImpl.NBT_KEY));
+                    cap.deserializeNBT((CompoundTag) original.getPersistentData().get(AbilityCapabilityImpl.NBT_KEY_ABILITIES));
                 }, () -> LOGGER.warn("No ability cap attached on clone"));
             } else {
                 LOGGER.warn("No saved data was found");
@@ -72,10 +73,10 @@ public final class ServerEventListener {
     public void playerDiedEvent(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             player.getCapability(ModCapabilities.DELPHI).resolve().ifPresentOrElse((cap) -> {
-                player.getPersistentData().put(DelphiCapabilityImpl.NBT_KEY, cap.serializeNBT());
+                player.getPersistentData().put(DelphiCapabilityImpl.NBT_KEY_NETWORTH, cap.serializeNBT());
             }, () -> LOGGER.warn("No delphi cap attached"));
             player.getCapability(ModCapabilities.ABILITIES).resolve().ifPresentOrElse((cap) -> {
-                player.getPersistentData().put(AbilityCapabilityImpl.NBT_KEY, cap.serializeNBT());
+                player.getPersistentData().put(AbilityCapabilityImpl.NBT_KEY_ABILITIES, cap.serializeNBT());
             }, () -> LOGGER.warn("No ability cap attached"));
         }
     }
