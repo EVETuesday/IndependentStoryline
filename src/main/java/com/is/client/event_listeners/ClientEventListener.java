@@ -32,7 +32,14 @@ public final class ClientEventListener {
     public void onGuiRender(RenderGuiOverlayEvent.Post event) {
         if (event.getOverlay().id() != VanillaGuiOverlay.HOTBAR.id()) return;
 
-        Minecraft.getInstance().font.drawShadow(event.getPoseStack(), I18n.get("is.gui.delphi_shop.button.balance", ClientDelphiManager.getInstance().getBalance(null)), 1, 1, AbilitiesShopScreen.BASE_COLOR);
+        String value = I18n.get("is.gui.delphi_shop.button.balance", ClientDelphiManager.getInstance().getBalance(null));
+        Minecraft.getInstance().font.drawShadow(event.getPoseStack(), value, 1, 1, AbilitiesShopScreen.BASE_COLOR);
+        RenderSystem.setShaderTexture(0, AbilitiesShopScreen.DELPHI_COIN_TEXTURE);
+        GuiComponent.blit(event.getPoseStack(), 1 + Minecraft.getInstance().font.width(value) + 1, 1,
+                0, 0,
+                10, 10,
+                10, 10
+        );
         if (ISConst.DEBUG) Minecraft.getInstance().font.drawShadow(event.getPoseStack(), "Networth: " + ClientDelphiManager.getInstance().getNetworth(null), 1, 10, AbilitiesShopScreen.BASE_COLOR);
 
         DelphiItemType currentItem = ClientAbilityManager.getInstance().getCurrentItem(null);

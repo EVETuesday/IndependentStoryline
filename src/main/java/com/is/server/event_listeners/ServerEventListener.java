@@ -1,17 +1,21 @@
 package com.is.server.event_listeners;
 
+import com.EveTuPart.Items.ModItems;
 import com.is.ISConst;
 import com.is.capabilities.ModCapabilities;
 import com.is.capabilities.abilities.AbilityCapabilityImpl;
 import com.is.capabilities.delphi.DelphiCapabilityImpl;
 import com.is.events.DelphiBalanceChangedEvent;
+import com.is.events.GainDelphiEvent;
 import com.is.network.NetworkHandler;
 import com.is.server.data.ServerAbilityManager;
 import com.is.server.data.ServerDelphiManager;
+import com.is.utils.CommonUtils;
 import com.mojang.logging.LogUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -19,6 +23,8 @@ import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
+
+import java.util.Random;
 
 public final class ServerEventListener {
 
@@ -37,8 +43,9 @@ public final class ServerEventListener {
     public void blockDestroyedEvent(BlockEvent.BreakEvent event) {
         if (event.getPlayer() instanceof ServerPlayer serverPlayer) {
             double price = ISConst.getDelphiByBlock(event.getState().getBlock());
-            if (price != 0.0d) {
-                ServerDelphiManager.getInstance().transfer(serverPlayer, price, false);
+            GainDelphiEvent gainDelphiEvent = new GainDelphiEvent(serverPlayer, price);
+            if (gainDelphiEvent.amount != 0.0d && !MinecraftForge.EVENT_BUS.post(gainDelphiEvent)) {
+                ServerDelphiManager.getInstance().transfer(serverPlayer, gainDelphiEvent.amount, false);
             }
         }
     }

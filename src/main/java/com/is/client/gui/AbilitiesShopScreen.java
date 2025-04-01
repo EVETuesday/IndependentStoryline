@@ -11,6 +11,7 @@ import com.is.network.NetworkHandler;
 import com.is.network.packets.C2SBuyAbilityPacket;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.AbstractButton;
@@ -25,13 +26,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AbilitiesShopScreen extends Screen {
 
+    private static final Logger LOGGER = LogUtils.getLogger();
+
     public static ResourceLocation BG_TEXTURE = ISConst.rl("textures/gui/delphi_upgrade_shop.png");
+    public static ResourceLocation DELPHI_COIN_TEXTURE = ISConst.rl("textures/gui/delphi_coin.png");
 
     protected static final int BUTTONS_AREA_START_Y = 82;
     protected static final int BUTTONS_AREA_START_X = 182;
@@ -68,6 +73,9 @@ public class AbilitiesShopScreen extends Screen {
 
     @Override
     protected void init() {
+        this.clearWidgets();
+        buttons.clear();
+
         this.selectedUpgradeButton = null;
         this.leftPos = (this.width - this.imageWidth) / 2;
         this.topPos = (this.height - this.imageHeight) / 2;
@@ -120,10 +128,20 @@ public class AbilitiesShopScreen extends Screen {
         }
 
         { //description
-            font.draw(poseStack, I18n.get("is.gui.delphi_shop.button.balance", String.valueOf(ClientDelphiManager.getInstance().getBalance(null))),
+            String value = I18n.get("is.gui.delphi_shop.button.balance", String.valueOf(ClientDelphiManager.getInstance().getBalance(null)));
+            font.draw(poseStack, value,
                     leftPos + DESCRIPTION_AREA_START_X - 2,
                     topPos + DESCRIPTION_AREA_START_Y - 20 + font.lineHeight / 2.0f, BASE_COLOR
             );
+
+            RenderSystem.setShaderTexture(0, AbilitiesShopScreen.DELPHI_COIN_TEXTURE);
+            blit(poseStack, leftPos + DESCRIPTION_AREA_START_X - 2 + Minecraft.getInstance().font.width(value) + 1, (int) (topPos + DESCRIPTION_AREA_START_Y - 20 + font.lineHeight / 2.0f),
+                    0, 0,
+                    10, 10,
+                    10, 10
+            );
+            RenderSystem.setShaderTexture(0, AbilitiesShopScreen.BG_TEXTURE);
+
             if (selectedUpgradeButton != null) {
                 List<FormattedCharSequence> description = font.split(FormattedText.of(I18n.get(selectedUpgradeButton.upgradeType.descriptionTranslation)), DESCRIPTION_AREA_WIDTH);
                 float y = topPos + DESCRIPTION_AREA_START_Y;
@@ -144,12 +162,20 @@ public class AbilitiesShopScreen extends Screen {
                     Minecraft.getInstance().getItemRenderer().renderGuiItem(delphiForBlocks.icon, leftPos + DESCRIPTION_AREA_START_X, y);
 
                     font.draw(poseStack, String.valueOf(delphiForBlocks.income),
-                            leftPos + DESCRIPTION_AREA_START_X + DESCRIPTION_AREA_WIDTH - font.width(String.valueOf(delphiForBlocks.income)) - 4,
+                            leftPos + DESCRIPTION_AREA_START_X + DESCRIPTION_AREA_WIDTH - font.width(String.valueOf(delphiForBlocks.income)) - 9,
                             y + font.lineHeight / 2.0f, BASE_COLOR
                     );
                     font.draw(poseStack, I18n.get(delphiForBlocks.translateName),
                             leftPos + DESCRIPTION_AREA_START_X + 20.3f, y + font.lineHeight / 2.0f, BASE_COLOR
                     );
+
+                    RenderSystem.setShaderTexture(0, AbilitiesShopScreen.DELPHI_COIN_TEXTURE);
+                    blit(poseStack, leftPos + DESCRIPTION_AREA_START_X + DESCRIPTION_AREA_WIDTH - 8, y + 4,
+                            0, 0,
+                            10, 10,
+                            10, 10
+                    );
+
                     y += 22;
                 }
             }
@@ -262,6 +288,12 @@ public class AbilitiesShopScreen extends Screen {
                 font.draw(poseStack, String.valueOf(upgradeType.price),
                         textX / scale, textY / scale,
                         GuiUtils.mulColorRGB(this.active ? GuiUtils.mulColorRGB(BASE_COLOR, 0.7f) : 0xFFFF0000, mulColor)
+                );
+                RenderSystem.setShaderTexture(0, AbilitiesShopScreen.DELPHI_COIN_TEXTURE);
+                blit(poseStack, (int) (textX / scale + font.width(String.valueOf(upgradeType.price)) + 2), (int) ((textY - 2) / scale),
+                        0, 0,
+                        10, 10,
+                        10, 10
                 );
             } else {
                 font.draw(poseStack, I18n.get("is.gui.delphi_shop.button.purchased"),
