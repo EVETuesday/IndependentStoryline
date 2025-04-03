@@ -23,5 +23,9 @@
   "is.abilities.agility.description": "Increases something...",
 
   "item.independent_storyline.legendary_sword": "Legendary Sword",
-  "itemGroup.IndependentStorylineTab": "Independent Storyline"
+  "itemGroup.IndependentStorylineTab": "Independent Storyline",
+  "item.independent_storyline.alfia_amulet": "Alfia's Amulet",
+  "item.independent_storyline.gerdes_amulet": "Gerdes's amulet",
+  "item.independent_storyline.edostol_amulet": "Edostol's amulet",
+  "effect.independent_storyline.flight": "Flight"
 }

@@ -23,5 +23,9 @@
   "is.abilities.agility.description": "Увеличиает что-то...",
 
   "item.independent_storyline.legendary_sword": "Легендарный меч",
-  "itemGroup.IndependentStorylineTab": "НСЛ"
+  "itemGroup.IndependentStorylineTab": "НСЛ",
+  "item.independent_storyline.alfia_amulet": "Амулет Альфии",
+  "item.independent_storyline.gerdes_amulet": "Амулет Гердеса",
+  "item.independent_storyline.edostol_amulet": "Амулет Эдостола",
+  "effect.independent_storyline.flight": "Полёт"
 }
