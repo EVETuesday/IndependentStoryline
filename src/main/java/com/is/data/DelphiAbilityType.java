@@ -4,6 +4,7 @@ import com.is.data.abilities.AbstractAbility;
 import com.is.data.abilities.AgilityAbility;
 import com.is.data.abilities.SpeedAbility;
 import com.is.data.abilities.StrengthAbility;
+import net.minecraft.world.BossEvent;
 
 public enum DelphiAbilityType {
 

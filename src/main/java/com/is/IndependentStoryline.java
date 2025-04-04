@@ -58,8 +58,6 @@ public class IndependentStoryline {
 
         public void commonSetup(FMLCommonSetupEvent event) {
             overlayOverrides = new OverlayOverrides(modEventBus);
-            ClientDelphiManager.initialize();
-            ClientAbilityManager.initialize();
             ModKeyBinds.init();
         }
 

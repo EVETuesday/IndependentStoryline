@@ -25,6 +25,10 @@ public class ClientAbilityManager implements IAbilityManager {
 
     private static ClientAbilityManager manager;
 
+    public static void invalidate() {
+        manager = null;
+    }
+
     public static void initialize() {
         manager = new ClientAbilityManager();
     }

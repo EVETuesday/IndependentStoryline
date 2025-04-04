@@ -7,6 +7,10 @@ public class ClientDelphiManager implements IDelphiManager {
 
     private static ClientDelphiManager manager;
 
+    public static void invalidate() {
+        manager = null;
+    }
+
     public static void initialize() {
         manager = new ClientDelphiManager();
     }

@@ -1,30 +1,33 @@
 package com.is.server.event_listeners;
 
-import com.EveTuPart.Items.ModItems;
 import com.is.ISConst;
 import com.is.capabilities.ModCapabilities;
 import com.is.capabilities.abilities.AbilityCapabilityImpl;
 import com.is.capabilities.delphi.DelphiCapabilityImpl;
-import com.is.events.DelphiBalanceChangedEvent;
+import com.is.data.CommonEnhancedBossEventManager;
 import com.is.events.GainDelphiEvent;
 import com.is.network.NetworkHandler;
+import com.is.server.commands.BindEntityForBossBarCommand;
 import com.is.server.data.ServerAbilityManager;
 import com.is.server.data.ServerDelphiManager;
-import com.is.utils.CommonUtils;
 import com.mojang.logging.LogUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.network.PacketDistributor;
 import org.slf4j.Logger;
-
-import java.util.Random;
 
 public final class ServerEventListener {
 
@@ -33,8 +36,16 @@ public final class ServerEventListener {
     private static MinecraftServer server;
 
     @SubscribeEvent
+    public void onServerStarting(RegisterCommandsEvent event) {
+        BindEntityForBossBarCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
     public void onServerStarted(ServerStartedEvent event) {
         server = event.getServer();
+
+        CommonEnhancedBossEventManager.initialize();
+        server.overworld().getDataStorage().computeIfAbsent(CommonEnhancedBossEventManager::load, CommonEnhancedBossEventManager::getInstance, "is_enhanced_boss_bars");
         ServerDelphiManager.initialize();
         ServerAbilityManager.initialize();
     }
@@ -55,6 +66,7 @@ public final class ServerEventListener {
         if (event.getEntity() instanceof ServerPlayer player) {
             ServerDelphiManager.getInstance().syncPlayer(player);
             ServerAbilityManager.getInstance().syncPlayer(player);
+            CommonEnhancedBossEventManager.getInstance().syncClients();
         }
     }
 
