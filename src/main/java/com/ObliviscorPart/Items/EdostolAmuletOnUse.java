@@ -1,7 +1,12 @@
 package com.ObliviscorPart.Items;
 
 import com.is.ISConst;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -11,10 +16,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class EdostolAmuletOnUse extends Item {
     public EdostolAmuletOnUse() {
@@ -25,11 +34,14 @@ public class EdostolAmuletOnUse extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(!level.isClientSide() && player instanceof ServerPlayer serverPlayer){
             BlockPos targetPos = getTeleportPosition(player);
+            ServerLevel serverLevel = (ServerLevel) level;
 
             if(targetPos != null) {
                 serverPlayer.teleportTo(targetPos.getX()+0.5, targetPos.getY(), targetPos.getZ()+0.5);
                 serverPlayer.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0f, 1.0f);
                 player.getCooldowns().addCooldown(this, 200);
+                Vec3 pos = player.position();
+                serverLevel.sendParticles(ParticleTypes.END_ROD, pos.x, pos.y+1, pos.z, 20, 0.2, 0.2,0.2, 0.2);
             }
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
@@ -45,5 +57,15 @@ public class EdostolAmuletOnUse extends Item {
             return new BlockPos(hitResult.getLocation());
         }
         return null;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+        if(Screen.hasShiftDown()) {
+            components.add(Component.literal("Амулет повстанца по имени Эдостол. Позволяет носителю телепортироваться на любой блок в радиусе 10 метров. Для телепортации нажмите ПКМ").withStyle(ChatFormatting.GOLD));
+        } else {
+            components.add(Component.literal("Зажмите SHIFT для подробной информации.").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        }
+        super.appendHoverText(itemStack, level, components, tooltipFlag);
     }
 }
