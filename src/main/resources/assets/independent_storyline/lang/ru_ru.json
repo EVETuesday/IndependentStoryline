@@ -31,5 +31,10 @@
   "is.item.charm_of_luck.description.2": "Способность 2",
 
   "is.item.abilities": "§l§b§kD§r§2§lСпособности§r§l§b§kD",
-  "is.item.shift_for_desc": "Нажмите Shift для описания способностей"
+  "is.item.shift_for_desc": "Нажмите Shift для описания способностей",
+  "itemGroup.IndependentStorylineTab": "НСЛ",
+  "item.independent_storyline.alfia_amulet": "Амулет Альфии",
+  "item.independent_storyline.gerdes_amulet": "Амулет Гердеса",
+  "item.independent_storyline.edostol_amulet": "Амулет Эдостола",
+  "effect.independent_storyline.flight": "Полёт"
 }

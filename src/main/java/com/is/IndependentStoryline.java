@@ -1,6 +1,7 @@
 package com.is;
 
 import com.EveTuPart.Items.ModItems;
+import com.ObliviscorPart.Effects.ModEffects;
 import com.is.client.ModKeyBinds;
 import com.is.client.data.ClientAbilityManager;
 import com.is.client.data.ClientDelphiManager;
@@ -33,6 +34,8 @@ public class IndependentStoryline {
 
         eventBus.register((modListener = new ServerEventListener.ModEvents()));
         MinecraftForge.EVENT_BUS.register((forgeListener = new ServerEventListener()));
+
+        ModEffects.register(eventBus);
     }
 
     @OnlyIn(Dist.CLIENT)

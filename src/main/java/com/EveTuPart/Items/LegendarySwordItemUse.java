@@ -5,6 +5,7 @@ import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
@@ -28,5 +29,14 @@ public class LegendarySwordItemUse extends SwordItem {
                 player.removeAllEffects();
             }
         }
+    }
+
+    @Override
+    public boolean hurtEnemy(ItemStack itemStack, LivingEntity target, LivingEntity Attacker) {
+        if (Attacker.hasEffect(MobEffects.DAMAGE_BOOST)) {
+            target.setSecondsOnFire(10);
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, 8 * 20, 0));
+        }
+        return super.hurtEnemy(itemStack, target, Attacker);
     }
 }
