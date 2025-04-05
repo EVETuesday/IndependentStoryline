@@ -22,7 +22,7 @@ public class StrengthAbility extends AbstractAbility {
 
     @Override
     public void tick(ServerPlayer player) {
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 3, true, false));
+        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 4, 3, true, false));
     }
 
 }

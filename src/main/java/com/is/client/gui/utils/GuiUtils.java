@@ -1,5 +1,15 @@
 package com.is.client.gui.utils;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.AbstractTexture;
+import net.minecraft.client.renderer.texture.SimpleTexture;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Tuple;
+
+import java.io.IOException;
+
 public final class GuiUtils {
 
     public static int calculateMiddleColorForAnim(int startColor, int endColor, AnimationTimeline animationTimeline) {
@@ -20,6 +30,17 @@ public final class GuiUtils {
         int b = (int) (((source >> 16) & 255) * factor);
         int alpha = (source >> 24) & 255;
         return (r | (g << 8)) | (b << 16) | (alpha << 24);
+    }
+
+    public static Tuple<Integer, Integer> getTextureSize(ResourceLocation rl) {
+        if (Minecraft.getInstance().getTextureManager().getTexture(rl) instanceof SimpleTexture simpleTexture) {
+            SimpleTexture.TextureImage image = simpleTexture.getTextureImage(Minecraft.getInstance().getResourceManager());
+            try {
+                return new Tuple<>(image.getImage().getWidth(), image.getImage().getHeight());
+            } catch (IOException ignored) { }
+        }
+
+        return  new Tuple<>(-1, -1);
     }
 
 }

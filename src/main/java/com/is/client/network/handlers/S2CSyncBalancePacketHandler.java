@@ -12,7 +12,8 @@ public class S2CSyncBalancePacketHandler extends AbstractPacketHandler<S2CSyncBa
     @Override
     public boolean handle(S2CSyncBalancePacket data, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ClientDelphiManager.getInstance().setDelphi(null, data.balance);
+            if (data.balance != -1) ClientDelphiManager.getInstance().setBalance(null, data.balance);
+            if (data.networth != -1) ClientDelphiManager.getInstance().setNetworth(null, data.networth);
         });
         return true;
     }

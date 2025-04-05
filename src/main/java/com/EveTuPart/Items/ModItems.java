@@ -1,6 +1,9 @@
 package com.EveTuPart.Items;
 
 import com.is.ISConst;
+import com.is.items.CharmOfLuckItem;
+import com.is.items.MagazineItem;
+import com.is.items.RandomFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,4 +18,8 @@ public class ModItems {
         ITEMS.register(iEventBus);
     }
     public  static  final RegistryObject<Item> LEGENDARY_SWORD = ITEMS.register("legendary_sword",LegendarySwordItemUse :: new);
+
+    public static final RegistryObject<Item> CHARM_OF_LUCK = ITEMS.register("charm_of_luck", CharmOfLuckItem::new);
+    public static final RegistryObject<Item> RANDOM_FOOD = ITEMS.register("random_food", RandomFoodItem::new);
+    public static final RegistryObject<Item> MAGAZINE = ITEMS.register("magazine_item", MagazineItem::new);
 }

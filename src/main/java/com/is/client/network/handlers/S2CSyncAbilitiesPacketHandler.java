@@ -15,6 +15,7 @@ public class S2CSyncAbilitiesPacketHandler extends AbstractPacketHandler<S2CSync
     public boolean handle(S2CSyncAbilitiesPacket data, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ClientAbilityManager.getInstance().setAbilities(null, data.abilities);
+            ClientAbilityManager.getInstance().setCurrentItem(null, data.currentItem);
             if (Minecraft.getInstance().screen instanceof AbilitiesShopScreen abilitiesShopScreen) {
                 abilitiesShopScreen.init(abilitiesShopScreen.getMinecraft(), abilitiesShopScreen.width, abilitiesShopScreen.height);
             }

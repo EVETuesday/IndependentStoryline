@@ -34,6 +34,13 @@ public abstract class AnimationTimeline {
         }
     }
 
+    public void reset() {
+        this.animationState = 0;
+        this.animStartedAt = -1;
+        this.animToStop = -1;
+        this.maxAnimState = -1;
+    }
+
     public void setAnimationState(long animationState) {
         this.animationState = animationState;
         update();

@@ -11,17 +11,25 @@
   "is.gui.delphi_shop.filters.iron": "Железная руда",
   "is.gui.delphi_shop.filters.gold": "Золотая руда",
   "is.gui.delphi_shop.filters.diamond": "Алмазная руда",
-  "is.gui.delphi_shop.filters.emerald": "Изумрудная руда",
+  "is.gui.delphi_shop.filters.emerald": "Изумрудная...",
 
   "is.abilities.speed.name": "Скорость",
-  "is.abilities.speed.description": "Увеличивает скорость передвижения игрока",
+  "is.abilities.speed.description": "Увеличивает скорость передвижения игрока.",
 
   "is.abilities.strength.name": "Сила",
-  "is.abilities.strength.description": "Увеличивает силу игрока",
+  "is.abilities.strength.description": "Увеличивает силу атаки игрока.",
 
   "is.abilities.agility.name": "Ловкость",
-  "is.abilities.agility.description": "Увеличиает что-то...",
+  "is.abilities.agility.description": "Увеличиает скорость копания игрока.",
 
   "item.independent_storyline.legendary_sword": "Легендарный меч",
-  "itemGroup.IndependentStorylineTab": "НСЛ"
+  "item.independent_storyline.magazine": "Журнал",
+  "itemGroup.IndependentStorylineTab": "НСЛ",
+
+  "is.item.charm_of_luck.magic_description": "Описание без шифта",
+  "is.item.charm_of_luck.description.1": "Способность 1",
+  "is.item.charm_of_luck.description.2": "Способность 2",
+
+  "is.item.abilities": "§l§b§kD§r§2§lСпособности§r§l§b§kD",
+  "is.item.shift_for_desc": "Нажмите Shift для описания способностей"
 }

@@ -1,6 +1,7 @@
 package com.EveTuPart.Items;
 
 import com.is.ISConst;
+import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;

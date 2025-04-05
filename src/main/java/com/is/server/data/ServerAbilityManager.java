@@ -4,12 +4,18 @@ import com.is.ISConst;
 import com.is.capabilities.ModCapabilities;
 import com.is.capabilities.abilities.IAbilityCapability;
 import com.is.data.DelphiAbilityType;
+import com.is.data.DelphiItemType;
 import com.is.data.IAbilityManager;
+import com.is.events.DelphiBalanceChangedEvent;
 import com.is.network.NetworkHandler;
+import com.is.network.packets.S2CPlayerGotDelphiItemPacket;
 import com.is.network.packets.S2CSyncAbilitiesPacket;
 import com.mojang.logging.LogUtils;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -74,12 +80,28 @@ public class ServerAbilityManager implements IAbilityManager {
         syncPlayer((ServerPlayer) player);
     }
 
-    public void syncPlayer(ServerPlayer player) {
-        syncPlayer(player, getAbilities(player));
+    @Override
+    public void setCurrentItem(Player player, DelphiItemType item) {
+        IAbilityCapability capability = getCap((ServerPlayer) player);
+        if (capability == null) return;
+
+        capability.setCurrentItem(item);
     }
 
-    protected void syncPlayer(ServerPlayer player, List<DelphiAbilityType> abilities) {
-        NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new S2CSyncAbilitiesPacket(abilities));
+    @Override
+    public DelphiItemType getCurrentItem(Player player) {
+        IAbilityCapability capability = getCap((ServerPlayer) player);
+        if (capability == null) return DelphiItemType.COPPER;
+
+        return capability.getCurrentItem();
+    }
+
+    public void syncPlayer(ServerPlayer player) {
+        syncPlayer(player, getAbilities(player), getCurrentItem(player));
+    }
+
+    protected void syncPlayer(ServerPlayer player, List<DelphiAbilityType> abilities, DelphiItemType currentItem) {
+        NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new S2CSyncAbilitiesPacket(abilities, currentItem));
     }
 
     protected @Nullable IAbilityCapability getCap(ServerPlayer player) {
@@ -98,5 +120,20 @@ public class ServerAbilityManager implements IAbilityManager {
                 getInstance().getAbilities(player).forEach(type ->
                         type.ability.tick(player))
         );
+    }
+
+    @SubscribeEvent
+    public static void onPlayersBalanceChanged(DelphiBalanceChangedEvent event) {
+        DelphiItemType currentItem = getInstance().getCurrentItem(event.player);
+        LOGGER.debug("Current item {}", currentItem);
+        if (currentItem == DelphiItemType.NULL) return;
+        if (ServerDelphiManager.getInstance().getNetworth(event.player) >= currentItem.requiredDelphies) {
+            getInstance().setCurrentItem(event.player, DelphiItemType.values()[currentItem.ordinal() + 1]);
+            event.player.addItem(currentItem.item.get());
+            event.player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80, 20, true, false));
+            NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) event.player), new S2CPlayerGotDelphiItemPacket(currentItem));
+            LOGGER.debug("Giving player {}", currentItem);
+            getInstance().syncPlayer((ServerPlayer) event.player);
+        }
     }
 }

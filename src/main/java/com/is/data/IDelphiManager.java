@@ -11,12 +11,19 @@ public interface IDelphiManager {
     default double transfer(Player player, double amount, boolean simulate) {
         double balance = getBalance(player);
         double newBalance = Math.max(balance + amount, 0);
-        if (!simulate) setDelphi(player, newBalance);
+        if (!simulate) {
+            setNetworth(player, getNetworth(player) + Math.max(0, newBalance - balance));
+            setBalance(player, newBalance);
+        }
         return Math.abs(balance - newBalance);
     }
 
     double getBalance(Player player);
 
-    void setDelphi(Player player, double amount);
+    void setBalance(Player player, double amount);
+
+    double getNetworth(Player player);
+
+    void setNetworth(Player player, double amount);
 
 }
