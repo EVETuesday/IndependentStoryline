@@ -37,14 +37,16 @@
   "item.independent_storyline.alfia_amulet": "Амулет Альфии",
   "is.item.alfia_amulet.magic_description": "Амулет повстанца по имени Альфия.",
   "is.item.alfia_amulet.description.1": "Нажатие клавиши ПКМ дает владельцу возможность летать на 30 секунд.",
+  "is.item.alfia_amulet.description.2": "Длительность перезарядки: 1 минута.",
 
   "item.independent_storyline.gerdes_amulet": "Амулет Гердеса",
   "is.item.gerdes_amulet.magic_description": "Амулет повстанца по имени Гердес.",
   "is.item.gerdes_amulet.description.1": "При активации амулет усиливает Легендарный меч, добавляя эффект силы носителю, а также поджигая и отравляя цель.",
-  "is.item.gerdes_amulet.description.2": "Перезарядка амулета 40 секунд",
+  "is.item.gerdes_amulet.description.2": "Перезарядка амулета 40 секунд.",
 
   "item.independent_storyline.edostol_amulet": "Амулет Эдостола",
   "is.item.edostol_amulet.magic_description": "Амулет повстанца по имени Эдостол.",
   "is.item.edostol_amulet.description.1": "При использовании телепортирует игрока на тот блок, на который направлен его взгляд. Максимальная дальность телепортации 10 блоков.",
+  "is.item.edostol_amulet.description.2": "Длительность перезарядки: 10 секунд.",
   "effect.independent_storyline.flight": "Полёт"
 }
