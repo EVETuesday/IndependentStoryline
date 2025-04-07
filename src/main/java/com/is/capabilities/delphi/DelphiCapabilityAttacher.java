@@ -24,7 +24,8 @@ public final class DelphiCapabilityAttacher {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private DelphiCapabilityAttacher() {}
+    private DelphiCapabilityAttacher() {
+    }
 
     private static final class DelphiCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 

@@ -2,15 +2,12 @@ package com.is.server.commands;
 
 import com.is.data.CommonEnhancedBossEvent;
 import com.is.data.CommonEnhancedBossEventManager;
-import com.is.network.NetworkHandler;
-import com.is.network.packets.S2CSyncEnhancedBossBarPacket;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.network.PacketDistributor;
 
 public class BindEntityForBossBarCommand {
 

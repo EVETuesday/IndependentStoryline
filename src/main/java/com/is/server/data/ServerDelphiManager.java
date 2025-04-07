@@ -29,7 +29,8 @@ public class ServerDelphiManager implements IDelphiManager {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private ServerDelphiManager() {}
+    private ServerDelphiManager() {
+    }
 
     @Override
     public double getBalance(Player player) {

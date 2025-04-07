@@ -23,7 +23,8 @@ public final class ClientEnhancedBossEventManager {
 
     final Map<UUID, ClientEnhancedBossEvent> bossBars = Maps.newHashMap();
 
-    private ClientEnhancedBossEventManager() {}
+    private ClientEnhancedBossEventManager() {
+    }
 
     public boolean add(ClientEnhancedBossEvent event) {
         event.add();

@@ -5,17 +5,13 @@ import com.is.data.DelphiAbilityType;
 import com.is.data.DelphiItemType;
 import com.is.data.IAbilityManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.TotemParticle;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.server.commands.TitleCommand;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +33,8 @@ public class ClientAbilityManager implements IAbilityManager {
         return manager;
     }
 
-    private ClientAbilityManager() {}
+    private ClientAbilityManager() {
+    }
 
     protected List<DelphiAbilityType> abilities = new ArrayList<>();
     protected DelphiItemType currentItem = DelphiItemType.COPPER;

@@ -1,9 +1,6 @@
 package com.is.client.gui.utils;
 
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.SimpleTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
@@ -37,10 +34,11 @@ public final class GuiUtils {
             SimpleTexture.TextureImage image = simpleTexture.getTextureImage(Minecraft.getInstance().getResourceManager());
             try {
                 return new Tuple<>(image.getImage().getWidth(), image.getImage().getHeight());
-            } catch (IOException ignored) { }
+            } catch (IOException ignored) {
+            }
         }
 
-        return  new Tuple<>(-1, -1);
+        return new Tuple<>(-1, -1);
     }
 
 }

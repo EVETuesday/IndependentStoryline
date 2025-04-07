@@ -24,7 +24,8 @@ public final class AbilityCapabilityAttacher {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private AbilityCapabilityAttacher() {}
+    private AbilityCapabilityAttacher() {
+    }
 
     private static final class AbilityCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 

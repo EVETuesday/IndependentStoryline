@@ -1,7 +1,6 @@
 package com.is.network.packets;
 
 import com.is.client.gui.magazines.MagazineType;
-import com.is.data.DelphiItemType;
 import com.is.network.AbstractPacket;
 import net.minecraft.network.FriendlyByteBuf;
 

@@ -1,6 +1,5 @@
 package com.is.data;
 
-import com.is.data.abilities.AbstractAbility;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;

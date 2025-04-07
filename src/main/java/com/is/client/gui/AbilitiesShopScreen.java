@@ -17,7 +17,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.BeaconScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
@@ -84,7 +83,7 @@ public class AbilitiesShopScreen extends Screen {
             int gap = (BUTTONS_AREA_HEIGHT - BUTTON_HEIGHT * DelphiAbilityType.values().length) / (DelphiAbilityType.values().length + 2);
             int y = BUTTONS_AREA_START_Y + gap;
 
-            for (DelphiAbilityType upgradeType: DelphiAbilityType.values()) {
+            for (DelphiAbilityType upgradeType : DelphiAbilityType.values()) {
                 UpgradeButton upgradeButton = new UpgradeButton(
                         BUTTONS_AREA_START_X + this.leftPos, this.topPos + y,
                         BUTTON_WIDTH, BUTTON_HEIGHT, upgradeType
@@ -226,7 +225,7 @@ public class AbilitiesShopScreen extends Screen {
         @Override
         public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
             this.animationTimeline.update();
-            this.hovered = mouseX >= (double)this.x && mouseY >= (double)this.y && mouseX < (double)(this.x + this.width) && mouseY < (double)(this.y + this.height);
+            this.hovered = mouseX >= (double) this.x && mouseY >= (double) this.y && mouseX < (double) (this.x + this.width) && mouseY < (double) (this.y + this.height);
 
             //preparing
             RenderSystem.setShader(GameRenderer::getPositionTexShader);

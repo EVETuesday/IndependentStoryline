@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- Event for gui overlays overrides registering.
- Uses MOD event bus.
+ * Event for gui overlays overrides registering.
+ * Uses MOD event bus.
  **/
 public class AddOverlayOverridesEvent extends Event implements IModBusEvent {
 

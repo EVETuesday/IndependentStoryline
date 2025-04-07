@@ -1,11 +1,8 @@
 package com.is.client.network.handlers;
 
-import com.is.client.data.ClientAbilityManager;
-import com.is.client.gui.AbilitiesShopScreen;
 import com.is.client.gui.magazines.MagazineScreen;
 import com.is.network.AbstractPacketHandler;
 import com.is.network.packets.S2COpenMagazinePacket;
-import com.is.network.packets.S2CSyncAbilitiesPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.network.NetworkEvent;
 

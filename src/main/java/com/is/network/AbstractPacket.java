@@ -4,7 +4,8 @@ import net.minecraft.network.FriendlyByteBuf;
 
 public abstract class AbstractPacket {
 
-    protected AbstractPacket(FriendlyByteBuf packetBuffer) {}
+    protected AbstractPacket(FriendlyByteBuf packetBuffer) {
+    }
 
     public abstract void toBuf(FriendlyByteBuf packetBuffer);
 }

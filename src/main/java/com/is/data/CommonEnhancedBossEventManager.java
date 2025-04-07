@@ -3,19 +3,12 @@ package com.is.data;
 import com.google.common.collect.Maps;
 import com.is.ISConst;
 import com.is.client.data.ClientEnhancedBossEvent;
-import com.is.server.ServerUtils;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.storage.DimensionDataStorage;
-import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -43,12 +36,13 @@ public final class CommonEnhancedBossEventManager extends SavedData {
 
     final Map<UUID, CommonEnhancedBossEvent> bossBars = Maps.newHashMap();
 
-    private CommonEnhancedBossEventManager() { }
+    private CommonEnhancedBossEventManager() {
+    }
 
     public static CommonEnhancedBossEventManager load(CompoundTag tag) {
         System.out.println("dksaldkasl;dkl;asfddddd " + tag);
         CommonEnhancedBossEventManager data = getInstance();
-        for (String key: tag.getAllKeys()) {
+        for (String key : tag.getAllKeys()) {
             UUID id = UUID.fromString(key);
             CompoundTag bossEventTag = (CompoundTag) tag.get(key);
             if (bossEventTag == null) continue;
@@ -69,7 +63,7 @@ public final class CommonEnhancedBossEventManager extends SavedData {
     @Override
     public @NotNull CompoundTag save(@NotNull CompoundTag compoundTag) {
         System.out.println("dksaldkasl;dkl;as");
-        for (CommonEnhancedBossEvent bossEvent: getAllBossBars()) {
+        for (CommonEnhancedBossEvent bossEvent : getAllBossBars()) {
             CompoundTag bossEventTag = new CompoundTag();
             bossEventTag.putString("name", Component.Serializer.toJson(bossEvent.getName()));
             bossEventTag.putFloat("value", bossEvent.getValue());
