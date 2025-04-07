@@ -6,7 +6,6 @@ import com.is.client.data.ClientDelphiManager;
 import com.is.client.data.ClientEnhancedBossEventManager;
 import com.is.client.events.gui.AddOverlayOverridesEvent;
 import com.is.client.gui.AbilitiesShopScreen;
-import com.is.client.gui.HotbarRenders;
 import com.is.data.DelphiItemType;
 import com.is.items.IItemWithTooltip;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -15,12 +14,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.commands.BossBarCommands;
-import net.minecraft.world.BossEvent;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,7 +41,8 @@ public final class ClientEventListener {
                 10, 10,
                 10, 10
         );
-        if (ISConst.DEBUG) Minecraft.getInstance().font.drawShadow(event.getPoseStack(), "Networth: " + ClientDelphiManager.getInstance().getNetworth(null), 1, 10, AbilitiesShopScreen.BASE_COLOR);
+        if (ISConst.DEBUG)
+            Minecraft.getInstance().font.drawShadow(event.getPoseStack(), "Networth: " + ClientDelphiManager.getInstance().getNetworth(null), 1, 10, AbilitiesShopScreen.BASE_COLOR);
 
         DelphiItemType currentItem = ClientAbilityManager.getInstance().getCurrentItem(null);
         if (currentItem != DelphiItemType.NULL) {

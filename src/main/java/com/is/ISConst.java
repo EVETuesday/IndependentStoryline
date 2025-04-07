@@ -11,17 +11,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class ISConst {
 
-    private ISConst() {}
+    private ISConst() {
+    }
 
     public static final String MODID = "independent_storyline";
 
@@ -32,13 +30,14 @@ public final class ISConst {
     }
 
     public static double getDelphiByBlock(Block block) {
-        for (DelphiForBlocks delphiForBlocks: DelphiForBlocks.values()) {
+        for (DelphiForBlocks delphiForBlocks : DelphiForBlocks.values()) {
             if (delphiForBlocks.acceptFunc.apply(block)) {
                 return delphiForBlocks.income;
             }
         }
         return 0.0d;
     }
+
     public static final ModCreativeTab modCreativeTab = new ModCreativeTab();
 
     public static List<Component> generateMagicItemDescription(ItemStack itemStack, Player player, String registryName) {
@@ -47,7 +46,7 @@ public final class ISConst {
             if (Screen.hasShiftDown()) {
                 components.add(Component.translatable("is.item.abilities"));
                 for (int i = 1; I18n.exists("is.item." + itemStack.getItem() + ".description." + i); i++) {
-                    components.add(Component.literal("  > ").withStyle(Style.EMPTY.withColor(0xFF009B02)).append(Component.translatable("storyworld.item." + registryName + ".description." + i)));
+                    components.add(Component.literal("  > ").withStyle(Style.EMPTY.withColor(0xFF009B02)).append(Component.translatable("is.item." + registryName + ".description." + i)));
                 }
             } else {
                 components.add(Component.translatable("is.item." + registryName + ".magic_description").withStyle(Style.EMPTY.withColor(0xFFAAAAAA)));

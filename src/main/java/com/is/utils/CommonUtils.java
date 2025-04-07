@@ -6,10 +6,11 @@ import net.minecraft.world.item.ItemStack;
 
 public final class CommonUtils {
 
-    private CommonUtils() {}
+    private CommonUtils() {
+    }
 
     public static boolean isPlayerHasItem(Player player, Item item) {
-        for (ItemStack itemStack: player.getInventory().items) {
+        for (ItemStack itemStack : player.getInventory().items) {
             if (itemStack.is(item)) {
                 return true;
             }

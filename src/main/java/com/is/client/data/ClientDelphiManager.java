@@ -19,7 +19,8 @@ public class ClientDelphiManager implements IDelphiManager {
         return manager;
     }
 
-    private ClientDelphiManager() {}
+    private ClientDelphiManager() {
+    }
 
     private double balance;
     private double networth;

@@ -1,7 +1,6 @@
 package com.is.client.data;
 
 import com.is.ISConst;
-import com.is.client.gui.AbilitiesShopScreen;
 import com.is.client.gui.utils.AnimationTimeline;
 import com.is.client.gui.utils.GuiUtils;
 import com.is.data.CommonEnhancedBossEvent;
@@ -11,7 +10,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -39,10 +37,10 @@ public class ClientEnhancedBossEvent extends CommonEnhancedBossEvent {
     };
 
     protected final ResourceLocation texture = ISConst.rl("textures/gui/boss_bar.png");
-    
+
     private float lastValue = 0.0f;
     private boolean markedRemoved = false;
-    
+
     protected final int imageWidth;
     protected final int imageHeight;
     protected final int bossBarHeight = 23;
@@ -85,7 +83,7 @@ public class ClientEnhancedBossEvent extends CommonEnhancedBossEvent {
         int x = (window.getGuiScaledWidth() - imageWidth) / 2;
         int y = 5;
 
-        float fadeInOutPercentage = markedRemoved ? 1.0f - fadeInOutAnimation.getPercentage(): fadeInOutAnimation.getPercentage();
+        float fadeInOutPercentage = markedRemoved ? 1.0f - fadeInOutAnimation.getPercentage() : fadeInOutAnimation.getPercentage();
         if (!fadeInOutAnimation.isEnded()) {
             RenderSystem.setShaderColor(fadeInOutPercentage, fadeInOutPercentage, 1.0f, fadeInOutPercentage);
             GuiComponent.enableScissor((int) (x + imageWidth / 2.0f * (1 - fadeInOutPercentage)), y, (int) (x + imageWidth / 2.0f + imageWidth / 2.0f * fadeInOutPercentage), y + bossBarHeight);
@@ -140,7 +138,8 @@ public class ClientEnhancedBossEvent extends CommonEnhancedBossEvent {
     }
 
     @Override
-    protected void syncClients(boolean removed) { }
+    protected void syncClients(boolean removed) {
+    }
 
     @Override
     public void setValue(float value) {

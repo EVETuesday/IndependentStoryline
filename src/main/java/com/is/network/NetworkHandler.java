@@ -27,7 +27,7 @@ public class NetworkHandler {
     public static void registerPackets() {
         LOGGER.info("Registering messages {}", INSTANCE);
         int i = 0;
-        for (Packets packetData: Packets.values()) {
+        for (Packets packetData : Packets.values()) {
             Class<? extends AbstractPacketHandler<?>> handlerClazz;
             if ((FMLEnvironment.dist.isClient() && packetData.playTo == NetworkDirection.PLAY_TO_CLIENT) ||
                     (packetData.playTo == NetworkDirection.PLAY_TO_SERVER)) {

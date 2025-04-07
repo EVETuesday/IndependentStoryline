@@ -4,9 +4,6 @@ import com.is.data.DelphiAbilityType;
 import com.is.network.AbstractPacket;
 import net.minecraft.network.FriendlyByteBuf;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class C2SBuyAbilityPacket extends AbstractPacket {
 
     public DelphiAbilityType ability;

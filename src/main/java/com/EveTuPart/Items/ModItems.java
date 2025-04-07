@@ -17,13 +17,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
-    public  static  final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ISConst.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ISConst.MODID);
 
-    public  static  void register(IEventBus iEventBus)
-    {
+    public static void register(IEventBus iEventBus) {
         ITEMS.register(iEventBus);
     }
-    public  static  final RegistryObject<Item> LEGENDARY_SWORD = ITEMS.register("legendary_sword",LegendarySwordItemUse :: new);
+
+    public static final RegistryObject<Item> LEGENDARY_SWORD = ITEMS.register("legendary_sword", LegendarySwordItemUse::new);
 
     public static final RegistryObject<Item> CHARM_OF_LUCK = ITEMS.register("charm_of_luck", CharmOfLuckItem::new);
     public static final RegistryObject<Item> RANDOM_FOOD = ITEMS.register("random_food", RandomFoodItem::new);

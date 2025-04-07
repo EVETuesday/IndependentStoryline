@@ -15,7 +15,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -41,7 +40,8 @@ public class ServerAbilityManager implements IAbilityManager {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private ServerAbilityManager() {}
+    private ServerAbilityManager() {
+    }
 
     @Override
     public void addAbility(Player player, DelphiAbilityType abilityType) {

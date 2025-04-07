@@ -8,13 +8,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ISConst.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCreativeTab extends CreativeModeTab {
-    public ModCreativeTab()
-    {
-        super(CreativeModeTab.TABS.length,"IndependentStorylineTab");
+    public ModCreativeTab() {
+        super(CreativeModeTab.TABS.length, "IndependentStorylineTab");
     }
 
     @Override
-    public ItemStack makeIcon(){
+    public ItemStack makeIcon() {
         //return new ItemStack(ModBlock.Green_Block.get());
         return new ItemStack(Items.DIAMOND);
     }

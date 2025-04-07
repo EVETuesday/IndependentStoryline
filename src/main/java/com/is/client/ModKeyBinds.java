@@ -34,7 +34,8 @@ public final class ModKeyBinds {
         }
     };
 
-    private ModKeyBinds() {}
+    private ModKeyBinds() {
+    }
 
     public static void init() {
         //just so all keybinds instantiate

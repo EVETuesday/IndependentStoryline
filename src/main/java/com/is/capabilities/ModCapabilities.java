@@ -13,10 +13,13 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = ISConst.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class ModCapabilities {
 
-    private ModCapabilities() {}
+    private ModCapabilities() {
+    }
 
-    public static Capability<IDelphiCapability> DELPHI = CapabilityManager.get(new CapabilityToken<>() {});
-    public static Capability<IAbilityCapability> ABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static Capability<IDelphiCapability> DELPHI = CapabilityManager.get(new CapabilityToken<>() {
+    });
+    public static Capability<IAbilityCapability> ABILITIES = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
     @SubscribeEvent
     public static void register(RegisterCapabilitiesEvent event) {

@@ -7,7 +7,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 import java.util.List;
 
-public interface IAbilityCapability  extends INBTSerializable<CompoundTag> {
+public interface IAbilityCapability extends INBTSerializable<CompoundTag> {
 
     List<DelphiAbilityType> getAbilities();
 

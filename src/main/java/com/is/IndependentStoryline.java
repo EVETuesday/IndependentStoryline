@@ -3,8 +3,6 @@ package com.is;
 import com.EveTuPart.Items.ModItems;
 import com.ObliviscorPart.Effects.ModEffects;
 import com.is.client.ModKeyBinds;
-import com.is.client.data.ClientAbilityManager;
-import com.is.client.data.ClientDelphiManager;
 import com.is.client.event_listeners.ClientEventListener;
 import com.is.client.gui.OverlayOverrides;
 import com.is.server.event_listeners.ServerEventListener;
