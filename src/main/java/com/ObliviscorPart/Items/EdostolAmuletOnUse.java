@@ -1,6 +1,7 @@
 package com.ObliviscorPart.Items;
 
 import com.is.ISConst;
+import com.is.items.IItemWithTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -25,9 +26,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EdostolAmuletOnUse extends Item {
+public class EdostolAmuletOnUse extends Item implements IItemWithTooltip {
     public EdostolAmuletOnUse() {
-        super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant().tab(ISConst.modCreativeTab));
+        super(new Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant().tab(ISConst.modCreativeTab));
     }
 
     @Override
@@ -60,12 +61,8 @@ public class EdostolAmuletOnUse extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-        if(Screen.hasShiftDown()) {
-            components.add(Component.literal("Амулет повстанца по имени Эдостол. Позволяет носителю телепортироваться на любой блок в радиусе 10 метров. Для телепортации нажмите ПКМ").withStyle(ChatFormatting.GOLD));
-        } else {
-            components.add(Component.literal("Зажмите SHIFT для подробной информации.").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        }
-        super.appendHoverText(itemStack, level, components, tooltipFlag);
+    public List<Component> getTooltip(ItemStack itemStack, Player player) {
+        return ISConst.generateMagicItemDescription(itemStack, player, "edostol_amulet");
     }
+
 }
