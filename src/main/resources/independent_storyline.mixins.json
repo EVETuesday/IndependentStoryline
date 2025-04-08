@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "com.is.mixins",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "ii.refmap.json",
+  "refmap": "independent_storyline.refmap.json",
   "mixins": [
   ],
   "client": [
