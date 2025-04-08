@@ -3,6 +3,7 @@ package com.ObliviscorPart.Items;
 import com.EveTuPart.Items.LegendarySwordItemUse;
 import com.EveTuPart.Items.ModItems;
 import com.is.ISConst;
+import com.is.items.IItemWithTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
@@ -33,10 +34,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class GerdesAmuletOnUse extends Item {
+public class GerdesAmuletOnUse extends Item implements IItemWithTooltip {
 
     public GerdesAmuletOnUse() {
-        super(new Properties().stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON).tab(ISConst.modCreativeTab));
+        super(new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC).tab(ISConst.modCreativeTab));
     }
 
     @Override
@@ -59,15 +60,9 @@ public class GerdesAmuletOnUse extends Item {
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }
 
-
-//    @Override
-//    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> components, TooltipFlag pIsAdvanced) {
-//        if (Screen.hasShiftDown()) {
-//            components.add(Component.literal("Амулет повстанца по имени Гердес. При активации, держа в левой руке, усиливает Легендарный меч, заставляя цель гореть и накладывает на нее эффект отравления.").withStyle(ChatFormatting.DARK_AQUA));
-//        } else {
-//            components.add(Component.literal("Зажмите клавишу SHIFT для подробной информации").withStyle(ChatFormatting.ITALIC, ChatFormatting.AQUA));
-//        }
-//        super.appendHoverText(pStack, pLevel, components, pIsAdvanced);
-//    }
+    @Override
+    public List<Component> getTooltip(ItemStack itemStack, Player player) {
+        return ISConst.generateMagicItemDescription(itemStack, player, "gerdes_amulet");
+    }
 
 }
