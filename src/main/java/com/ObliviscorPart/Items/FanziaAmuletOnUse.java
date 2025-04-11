@@ -2,14 +2,11 @@ package com.ObliviscorPart.Items;
 
 import com.is.ISConst;
 import com.is.items.IItemWithTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,17 +14,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EdostolAmuletOnUse extends Item implements IItemWithTooltip {
-    public EdostolAmuletOnUse() {
+public class FanziaAmuletOnUse extends Item implements IItemWithTooltip {
+    public FanziaAmuletOnUse() {
         super(new Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant().tab(ISConst.modCreativeTab));
     }
 
