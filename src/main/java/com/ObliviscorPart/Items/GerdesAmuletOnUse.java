@@ -47,7 +47,7 @@ public class GerdesAmuletOnUse extends Item implements IItemWithTooltip {
             ServerLevel serverLevel = (ServerLevel) level;
 
             if(MainHandItem.getItem() == ModItems.LEGENDARY_SWORD.get()) {
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 20, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20 * 20, 0, false, false));
                 player.displayClientMessage(Component.literal("§5Получен буст к урону!"), true);
                 player.getCooldowns().addCooldown(this, 600);
                 serverPlayer.playSound(SoundEvents.BEACON_ACTIVATE, 100, 10);
