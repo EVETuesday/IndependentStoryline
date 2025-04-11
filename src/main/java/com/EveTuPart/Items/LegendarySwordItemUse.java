@@ -27,7 +27,7 @@ public class LegendarySwordItemUse extends SwordItem implements IItemWithTooltip
             Player player = pEntity.level.getNearestPlayer(pEntity,1);
             if (pIsSelected)
             {
-                player.addEffect(new MobEffectInstance(MobEffects.JUMP,10,1));
+                player.addEffect(new MobEffectInstance(MobEffects.JUMP,10,1, false, false));
             }
         }
     }
@@ -36,7 +36,7 @@ public class LegendarySwordItemUse extends SwordItem implements IItemWithTooltip
     public boolean hurtEnemy(ItemStack itemStack, LivingEntity target, LivingEntity Attacker) {
         if (Attacker.hasEffect(MobEffects.DAMAGE_BOOST)) {
             target.setSecondsOnFire(10);
-            target.addEffect(new MobEffectInstance(MobEffects.POISON, 8 * 20, 0));
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, 8 * 20, 0, false, false));
         }
         return super.hurtEnemy(itemStack, target, Attacker);
     }
