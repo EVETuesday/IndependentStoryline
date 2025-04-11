@@ -57,7 +57,7 @@ public class FanziaAmuletOnUse extends Item implements IItemWithTooltip {
 
     @Override
     public List<Component> getTooltip(ItemStack itemStack, Player player) {
-        return ISConst.generateMagicItemDescription(itemStack, player, "edostol_amulet");
+        return ISConst.generateMagicItemDescription(itemStack, player, "fanzia_amulet");
     }
 
 }
