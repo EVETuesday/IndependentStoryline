@@ -21,9 +21,9 @@ public class RandomFoodItem extends Item {
                                         .nutrition(3)
                                         .saturationMod(0.3F)
                                         .meat()
-                                        .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20 * 60 * 2, 2), .5f)
-                                        .effect(() -> new MobEffectInstance(MobEffects.JUMP, 20 * 60 * 2, 2), .5f)
-                                        .effect(() -> new MobEffectInstance(MobEffects.POISON, 20 * 60, 2), .1f).build()
+                                        .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20 * 60 * 2, 2, false, false), .5f)
+                                        .effect(() -> new MobEffectInstance(MobEffects.JUMP, 20 * 60 * 2, 2, false, false), .5f)
+                                        .effect(() -> new MobEffectInstance(MobEffects.POISON, 20 * 60, 2, false, false), .1f).build()
                         )
         );
     }
