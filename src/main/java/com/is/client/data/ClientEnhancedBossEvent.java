@@ -36,8 +36,6 @@ public class ClientEnhancedBossEvent extends CommonEnhancedBossEvent {
         }
     };
 
-    protected final ResourceLocation texture = ISConst.rl("textures/gui/boss_bar.png");
-
     private float lastValue = 0.0f;
     private boolean markedRemoved = false;
 
@@ -45,8 +43,17 @@ public class ClientEnhancedBossEvent extends CommonEnhancedBossEvent {
     protected final int imageHeight;
     protected final int bossBarHeight = 23;
 
-    public ClientEnhancedBossEvent(UUID pId, Component pName, float maxValue, boolean pDarkenScreen, boolean pBossMusic, boolean pWorldFog) {
+    private final ResourceLocation texture;
+    private final boolean shakeOnChange;
+
+    public ClientEnhancedBossEvent(UUID pId, ResourceLocation texture, Component pName, float maxValue, boolean pDarkenScreen, boolean pBossMusic, boolean pWorldFog) {
+        this(pId, texture, pName, maxValue, pDarkenScreen, pBossMusic, pWorldFog, true);
+    }
+
+    public ClientEnhancedBossEvent(UUID pId, ResourceLocation texture, Component pName, float maxValue, boolean pDarkenScreen, boolean pBossMusic, boolean pWorldFog, boolean shakeOnChange) {
         super(pId, pName, maxValue, pDarkenScreen, pWorldFog, pBossMusic);
+        this.texture = texture;
+        this.shakeOnChange = shakeOnChange;
         this.fadeInOutAnimation.pause();
         Tuple<Integer, Integer> textureSize = GuiUtils.getTextureSize(texture);
         this.imageWidth = textureSize.getA();
@@ -70,7 +77,7 @@ public class ClientEnhancedBossEvent extends CommonEnhancedBossEvent {
         if (damageAnimation.isEnded()) {
             lastValue = getValue();
             damageAnimation.reset();
-        } else {
+        } else if (shakeOnChange) {
             lastShakeX = (float) ((Math.random() - 0.5f) * 1.35f);
             lastShakeY = (float) ((Math.random() - 0.5f) * 1.35f);
         }

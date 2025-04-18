@@ -23,7 +23,9 @@
   "is.abilities.agility.description": "Увеличиает скорость копания игрока.",
 
   "item.independent_storyline.legendary_sword": "Легендарный меч",
-  "item.independent_storyline.magazine": "Журнал",
+  "item.independent_storyline.charm_of_luck": "Амулет удачи",
+  "item.independent_storyline.random_food": "Радужный Стейк",
+  "item.independent_storyline.magazine_item": "Журнал",
   "itemGroup.IndependentStorylineTab": "НСЛ",
 
   "is.item.charm_of_luck.magic_description": "Описание без шифта",

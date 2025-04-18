@@ -23,7 +23,9 @@
   "is.abilities.agility.description": "Increases players mining speed.",
 
   "item.independent_storyline.legendary_sword": "Legendary Sword",
-  "item.independent_storyline.magazine": "Magazine",
+  "item.independent_storyline.charm_of_luck": "Charm Of Luck",
+  "item.independent_storyline.random_food": "Random Food",
+  "item.independent_storyline.magazine_item": "Magazine",
   "itemGroup.IndependentStorylineTab": "Independent Storyline",
   "item.independent_storyline.alfia_amulet": "Alfia's Amulet",
   "item.independent_storyline.gerdes_amulet": "Gerdes's amulet",
