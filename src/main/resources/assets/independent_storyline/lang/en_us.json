@@ -43,5 +43,7 @@
   "is.item.fanzia_amulet.magic_description": "Amulet of a insurgent named Fanzia.",
   "is.item.fanzia_amulet.description.1": "When used, teleports the player to the block they are looking at. Max range of teleportation is 10 blocks.",
   "is.item.fanzia_amulet.description.2": "Recharge duration: 10 seconds.",
-  "effect.independent_storyline.flight": "Flight"
+  "effect.independent_storyline.flight": "Flight",
+
+  "item.independent_storyline.wrench": "Wrench"
 }
