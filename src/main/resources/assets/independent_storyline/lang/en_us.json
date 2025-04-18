@@ -27,8 +27,22 @@
   "item.independent_storyline.random_food": "Random Food",
   "item.independent_storyline.magazine_item": "Magazine",
   "itemGroup.IndependentStorylineTab": "Independent Storyline",
+
   "item.independent_storyline.alfia_amulet": "Alfia's Amulet",
+  "is.item.alfia_amulet.magic_description": "Amulet of a insurgent named Alfia.",
+  "is.item.alfia_amulet.description.1": "Pressing RMB gives a player fly ability for 30 seconds.",
+  "is.item.alfia_amulet.description.2": "Recharge: 1 minute.",
+
   "item.independent_storyline.gerdes_amulet": "Gerdes's amulet",
+  "is.item.gerdes_amulet.magic_description": "Amulet of a rebel named Gerdes.",
+  "is.item.gerdes_amulet.description.1": "When activated, the amulet enhances the Legendary Sword, adding a strength effect to the player, as well as burning and poisoning the target.",
+  "is.item.gerdes_amulet.description.2": "Recharge duration: 40 seconds.",
+
   "item.independent_storyline.fanzia_amulet": "Fanzia's amulet",
-  "effect.independent_storyline.flight": "Flight"
+  "is.item.fanzia_amulet.magic_description": "Amulet of a insurgent named Fanzia.",
+  "is.item.fanzia_amulet.description.1": "When used, teleports the player to the block they are looking at. Max range of teleportation is 10 blocks.",
+  "is.item.fanzia_amulet.description.2": "Recharge duration: 10 seconds.",
+  "effect.independent_storyline.flight": "Flight",
+
+  "item.independent_storyline.wrench": "Wrench"
 }

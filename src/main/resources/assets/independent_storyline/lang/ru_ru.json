@@ -50,5 +50,7 @@
   "is.item.fanzia_amulet.magic_description": "Амулет повстанца по имени Фанзия.",
   "is.item.fanzia_amulet.description.1": "При использовании телепортирует игрока на тот блок, на который направлен его взгляд. Максимальная дальность телепортации 10 блоков.",
   "is.item.fanzia_amulet.description.2": "Длительность перезарядки: 10 секунд.",
-  "effect.independent_storyline.flight": "Полёт"
+  "effect.independent_storyline.flight": "Полёт",
+
+  "item.independent_storyline.wrench": "Гаечный ключ"
 }

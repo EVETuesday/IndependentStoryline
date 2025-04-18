@@ -3,6 +3,7 @@ package com.EveTuPart.Items;
 import com.ObliviscorPart.Items.AlfiaAmuletOnUse;
 import com.ObliviscorPart.Items.FanziaAmuletOnUse;
 import com.ObliviscorPart.Items.GerdesAmuletOnUse;
+import com.ObliviscorPart.Items.WrenchItem;
 import com.is.ISConst;
 import com.is.items.CharmOfLuckItem;
 import com.is.items.MagazineItem;
@@ -28,5 +29,6 @@ public class ModItems {
     public static final RegistryObject<Item> ALFIA_AMULET = ITEMS.register("alfia_amulet", AlfiaAmuletOnUse::new);
     public static final RegistryObject<Item> GERDES_AMULET = ITEMS.register("gerdes_amulet", GerdesAmuletOnUse::new);
     public static final RegistryObject<Item> FANZIA_AMULET = ITEMS.register("fanzia_amulet", FanziaAmuletOnUse::new);
+    public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
 
 }
