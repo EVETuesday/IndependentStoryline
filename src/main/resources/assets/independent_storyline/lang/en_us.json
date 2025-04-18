@@ -23,6 +23,9 @@
   "is.abilities.agility.description": "Increases players mining speed.",
 
   "item.independent_storyline.legendary_sword": "Legendary Sword",
+  "is.item.legendary_sword.magic_description": "Your Legendary Sword",
+  "is.item.legendary_sword.description.1": "By holding your sword in your hands, your legs become stronger, making your jumps higher.",
+
   "item.independent_storyline.charm_of_luck": "Charm Of Luck",
   "item.independent_storyline.random_food": "Random Food",
   "item.independent_storyline.magazine_item": "Magazine",
