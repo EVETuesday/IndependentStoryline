@@ -23,10 +23,9 @@
   "is.abilities.agility.description": "Увеличиает скорость копания игрока.",
 
   "item.independent_storyline.legendary_sword": "Легендарный меч",
-  "is.item.legendary_sword.magic_description": "Ваш легендарный меч",
-  "is.item.legendary_sword.description.1": "Держа свой меч в ваших руках, ваши ноги становятся сильнее, от чего ваши прыжки более высокие.",
-
-  "item.independent_storyline.magazine": "Журнал",
+  "item.independent_storyline.charm_of_luck": "Амулет удачи",
+  "item.independent_storyline.random_food": "Радужный Стейк",
+  "item.independent_storyline.magazine_item": "Журнал",
   "itemGroup.IndependentStorylineTab": "НСЛ",
 
   "is.item.charm_of_luck.magic_description": "Описание без шифта",

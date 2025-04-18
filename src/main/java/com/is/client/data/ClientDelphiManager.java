@@ -1,7 +1,10 @@
 package com.is.client.data;
 
 import com.is.data.IDelphiManager;
+import com.is.events.DelphiBalanceChangedEvent;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ClientDelphiManager implements IDelphiManager {
 
@@ -32,6 +35,7 @@ public class ClientDelphiManager implements IDelphiManager {
 
     @Override
     public void setBalance(Player player, double amount) {
+        if (MinecraftForge.EVENT_BUS.post(new DelphiBalanceChangedEvent(Minecraft.getInstance().player, balance, amount, networth))) return;
         balance = amount;
     }
 

@@ -124,16 +124,18 @@ public class ServerAbilityManager implements IAbilityManager {
 
     @SubscribeEvent
     public static void onPlayersBalanceChanged(DelphiBalanceChangedEvent event) {
-        DelphiItemType currentItem = getInstance().getCurrentItem(event.player);
-        LOGGER.debug("Current item {}", currentItem);
-        if (currentItem == DelphiItemType.NULL) return;
-        if (ServerDelphiManager.getInstance().getNetworth(event.player) >= currentItem.requiredDelphies) {
-            getInstance().setCurrentItem(event.player, DelphiItemType.values()[currentItem.ordinal() + 1]);
-            event.player.addItem(currentItem.item.get());
-            event.player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80, 20, true, false));
-            NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) event.player), new S2CPlayerGotDelphiItemPacket(currentItem));
-            LOGGER.debug("Giving player {}", currentItem);
-            getInstance().syncPlayer((ServerPlayer) event.player);
+        if (event.player instanceof ServerPlayer) {
+            DelphiItemType currentItem = getInstance().getCurrentItem(event.player);
+            LOGGER.debug("Current item {}", currentItem);
+            if (currentItem == DelphiItemType.NULL) return;
+            if (ServerDelphiManager.getInstance().getNetworth(event.player) >= currentItem.requiredDelphies) {
+                getInstance().setCurrentItem(event.player, DelphiItemType.values()[currentItem.ordinal() + 1]);
+                event.player.addItem(currentItem.item.get());
+                event.player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80, 20, true, false));
+                NetworkHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) event.player), new S2CPlayerGotDelphiItemPacket(currentItem));
+                LOGGER.debug("Giving player {}", currentItem);
+                getInstance().syncPlayer((ServerPlayer) event.player);
+            }
         }
     }
 }
