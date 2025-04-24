@@ -38,7 +38,7 @@ public class ClientAbilityManager implements IAbilityManager {
     }
 
     protected List<DelphiAbilityType> abilities = new ArrayList<>();
-    protected DelphiItemType currentItem = DelphiItemType.COPPER;
+    protected DelphiItemType currentItem = DelphiItemType.CHARM_OF_LUCK;
 
     @Override
     public void addAbility(Player player, DelphiAbilityType abilityType) {
@@ -63,6 +63,7 @@ public class ClientAbilityManager implements IAbilityManager {
     @Override
     public void setCurrentItem(Player player, DelphiItemType item) {
         currentItem = item;
+        ClientEventListener.updateItemDelphiData();
     }
 
     @Override

@@ -46,6 +46,7 @@ public class ClientDelphiManager implements IDelphiManager {
 
     @Override
     public void setNetworth(Player player, double amount) {
+        if (MinecraftForge.EVENT_BUS.post(new DelphiBalanceChangedEvent(Minecraft.getInstance().player, balance, balance, amount))) return;
         networth = amount;
     }
 }
