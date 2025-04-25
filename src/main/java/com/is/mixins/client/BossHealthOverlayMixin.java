@@ -19,8 +19,12 @@ public abstract class BossHealthOverlayMixin extends GuiComponent {
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     public void renderInject(PoseStack pPoseStack, CallbackInfo ci) {
         List<ClientEnhancedBossEvent> bossBars = ClientEnhancedBossEventManager.getInstance().getAllBossBars();
+        int y = 3;
         if (!bossBars.isEmpty()) {
-            bossBars.forEach((bar) -> bar.render(pPoseStack));
+            for (ClientEnhancedBossEvent bossEvent: bossBars) {
+                bossEvent.render(pPoseStack, y);
+                y += 3 + bossEvent.getBossBarHeight();
+            }
             ci.cancel();
         }
     }

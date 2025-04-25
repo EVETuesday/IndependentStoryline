@@ -91,7 +91,7 @@ public class ServerAbilityManager implements IAbilityManager {
     @Override
     public DelphiItemType getCurrentItem(Player player) {
         IAbilityCapability capability = getCap((ServerPlayer) player);
-        if (capability == null) return DelphiItemType.COPPER;
+        if (capability == null) return DelphiItemType.CHARM_OF_LUCK;
 
         return capability.getCurrentItem();
     }
