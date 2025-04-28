@@ -4,6 +4,7 @@ import com.is.ISConst;
 import com.is.client.gui.magazines.MagazineType;
 import com.is.network.NetworkHandler;
 import com.is.network.packets.S2COpenMagazinePacket;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -15,6 +16,16 @@ import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 public class MagazineItem extends Item {
+
+    public final static CompoundTag MAGAZINE_COMPOUND_1;
+    public final static CompoundTag MAGAZINE_COMPOUND_2;
+
+    static {
+        MAGAZINE_COMPOUND_1 = new CompoundTag();
+        MAGAZINE_COMPOUND_1.putInt(MagazineItem.MAGAZINE_TYPE_NBT, 0);
+        MAGAZINE_COMPOUND_2 = new CompoundTag();
+        MAGAZINE_COMPOUND_2.putInt(MagazineItem.MAGAZINE_TYPE_NBT, 1);
+    }
 
     public static final String MAGAZINE_TYPE_NBT = "magazineType";
 
