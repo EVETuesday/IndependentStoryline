@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class LegendarySwordItemUse extends SwordItem implements IItemWithTooltip {
-    public LegendarySwordItemUse(){ super(Tiers.NETHERITE, 3,-2.4f,new Properties().tab(ISConst.modCreativeTab).rarity(Rarity.EPIC));
+    public LegendarySwordItemUse(){ super(Tiers.NETHERITE, 3,-2.4f,new Properties().tab(ISConst.modCreativeTab).rarity(Rarity.EPIC).fireResistant());
     }
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected){
