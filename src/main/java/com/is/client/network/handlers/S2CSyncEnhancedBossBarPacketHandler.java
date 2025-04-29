@@ -1,5 +1,6 @@
 package com.is.client.network.handlers;
 
+import com.is.ISConst;
 import com.is.client.data.ClientEnhancedBossEvent;
 import com.is.client.data.ClientEnhancedBossEventManager;
 import com.is.network.AbstractPacketHandler;
@@ -16,7 +17,8 @@ public class S2CSyncEnhancedBossBarPacketHandler extends AbstractPacketHandler<S
     public boolean handle(S2CSyncEnhancedBossBarPacket data, Supplier<NetworkEvent.Context> ctx) {
         Optional<ClientEnhancedBossEvent> bossEvent = ClientEnhancedBossEventManager.getInstance().getBossBar(data.uuid);
         if (bossEvent.isEmpty()) {
-            ClientEnhancedBossEvent event = new ClientEnhancedBossEvent(data.uuid, Component.literal("Абоба"), data.maxValue, false, false, false);
+            //todo implement entity name display
+            ClientEnhancedBossEvent event = new ClientEnhancedBossEvent(data.uuid, ISConst.rl("textures/gui/boss_bar.png"), Component.literal("Абоба"), data.maxValue, false, false, false);
             ClientEnhancedBossEventManager.getInstance().add(event);
             event.sync(data);
         } else {

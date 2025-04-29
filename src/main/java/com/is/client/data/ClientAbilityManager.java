@@ -1,5 +1,6 @@
 package com.is.client.data;
 
+import com.is.client.event_listeners.ClientEventListener;
 import com.is.client.gui.AbilitiesShopScreen;
 import com.is.data.DelphiAbilityType;
 import com.is.data.DelphiItemType;
@@ -37,7 +38,7 @@ public class ClientAbilityManager implements IAbilityManager {
     }
 
     protected List<DelphiAbilityType> abilities = new ArrayList<>();
-    protected DelphiItemType currentItem = DelphiItemType.COPPER;
+    protected DelphiItemType currentItem = DelphiItemType.CHARM_OF_LUCK;
 
     @Override
     public void addAbility(Player player, DelphiAbilityType abilityType) {
@@ -62,6 +63,7 @@ public class ClientAbilityManager implements IAbilityManager {
     @Override
     public void setCurrentItem(Player player, DelphiItemType item) {
         currentItem = item;
+        ClientEventListener.updateItemDelphiData();
     }
 
     @Override
@@ -86,6 +88,7 @@ public class ClientAbilityManager implements IAbilityManager {
         Minecraft.getInstance().gui.setTitle(Component.literal(" "));
         Minecraft.getInstance().gui.setSubtitle(Component.literal("Получен новый предмет").withStyle(Style.EMPTY.withColor(AbilitiesShopScreen.BASE_COLOR)));
         player.playSound(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE);
+        ClientEventListener.updateItemDelphiData();
 
     }
 }

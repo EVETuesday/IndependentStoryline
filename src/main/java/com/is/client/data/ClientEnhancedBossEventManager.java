@@ -42,6 +42,9 @@ public final class ClientEnhancedBossEventManager {
     }
 
     public boolean update(ClientEnhancedBossEvent event) {
+        if (getBossBar(event.getId()).isEmpty()) {
+            return add(event);
+        }
         return bossBars.replace(event.getId(), event) != null;
     }
 

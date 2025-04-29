@@ -5,6 +5,7 @@ import com.is.ISConst;
 import com.is.events.GainDelphiEvent;
 import com.is.utils.CommonUtils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,6 +25,7 @@ public class CharmOfLuckItem extends Item implements IItemWithTooltip {
 
     @SubscribeEvent
     public void gainDelphiEvent(GainDelphiEvent event) {
+        if (!(event.player instanceof ServerPlayer)) return;
         Random random = new Random();
         if (random.nextFloat() <= 0.15f && CommonUtils.isPlayerHasItem(event.player, ModItems.CHARM_OF_LUCK.get())) {
             event.amount *= 2;
