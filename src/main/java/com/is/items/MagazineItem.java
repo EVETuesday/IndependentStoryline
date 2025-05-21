@@ -5,6 +5,7 @@ import com.is.client.gui.magazines.MagazineType;
 import com.is.network.NetworkHandler;
 import com.is.network.packets.S2COpenMagazinePacket;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -15,7 +16,9 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
-public class MagazineItem extends Item {
+import java.util.List;
+
+public class MagazineItem extends Item implements IItemWithTooltip {
 
     public final static CompoundTag MAGAZINE_COMPOUND_1;
     public final static CompoundTag MAGAZINE_COMPOUND_2;
@@ -46,5 +49,9 @@ public class MagazineItem extends Item {
             return InteractionResultHolder.pass(itemStack);
         }
         return InteractionResultHolder.sidedSuccess(itemStack, true);
+    }
+    @Override
+    public List<Component> getTooltip(ItemStack itemStack, Player player) {
+        return ISConst.generateMagicItemDescription(itemStack, player, "magazine_item");
     }
 }

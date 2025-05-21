@@ -31,6 +31,17 @@
   "item.independent_storyline.magazine_item": "Magazine",
   "itemGroup.IndependentStorylineTab": "Independent Storyline",
 
+  "is.item.charm_of_luck.magic_description": "",
+  "is.item.charm_of_luck.description.1": "This amulet will double the number of dolphins you receive for 30 seconds, but it will activate with a 15% chance.",
+  "is.item.charm_of_luck.description.2": "Recharge the Amulet: 15 seconds.",
+
+  "is.item.random_food.magic_description": "",
+  "is.item.random_food.description.1": "When you eat it, a random effect will be applied to you, it can be either positive or negative.",
+
+  "is.item.magazine_item.magic_description": "",
+  "is.item.magazine_item.description.1": "The creator of this newspaper is an unknown group of rebels of this world.",
+
+
   "item.independent_storyline.alfia_amulet": "Alfia's Amulet",
   "is.item.alfia_amulet.magic_description": "Amulet of a insurgent named Alfia.",
   "is.item.alfia_amulet.description.1": "Pressing RMB gives a player fly ability for 30 seconds.",
