@@ -32,7 +32,8 @@ public final class ServerEventListener {
 
     @SubscribeEvent
     public void onServerStarting(RegisterCommandsEvent event) {
-        BindEntityForBossBarCommand.register(event.getDispatcher());
+        BindEntityForBossBarCommand.registerUnbind(event.getDispatcher());
+        BindEntityForBossBarCommand.registerBind(event.getDispatcher());
     }
 
     @SubscribeEvent
