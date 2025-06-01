@@ -32,7 +32,7 @@ public class AlfiaAmuletOnUse extends Item implements IItemWithTooltip {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(!player.level.isClientSide() && hand == InteractionHand.MAIN_HAND) {
             ServerLevel serverLevel = (ServerLevel) level;
-            player.addEffect(new MobEffectInstance(ModEffects.FLIGHT.get(), 600, 0));
+            player.addEffect(new MobEffectInstance(ModEffects.FLIGHT.get(), 600, 0, true, false, true));
             player.displayClientMessage(Component.literal("§6Способность Полет активирована."), true);
             player.getCooldowns().addCooldown(this, 1200);
             Vec3 pos = player.position();
