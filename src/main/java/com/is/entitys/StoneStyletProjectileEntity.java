@@ -1,6 +1,8 @@
 package com.is.entitys;
 import com.EveTuPart.Items.ModItems;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
@@ -40,11 +42,20 @@ public class StoneStyletProjectileEntity extends ThrowableProjectile {
         }
     }
 
-    @Override
     protected void onHitEntity(EntityHitResult pResult) {
-
-
-        this.discard();
         super.onHitEntity(pResult);
+        Entity entity = this.getOwner();
+        if (entity instanceof LivingEntity) {
+            pResult.getEntity().hurt(DamageSource.indirectMobAttack(this, (LivingEntity)entity).setProjectile(), 5.0F);
+        }
+
+    }
+
+    protected void onHitBlock(BlockHitResult pResult) {
+        super.onHitBlock(pResult);
+        if (!this.level.isClientSide) {
+            this.discard();
+        }
+
     }
 }

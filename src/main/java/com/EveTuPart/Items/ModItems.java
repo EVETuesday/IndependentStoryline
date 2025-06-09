@@ -6,6 +6,7 @@ import com.ObliviscorPart.Items.GerdesAmuletOnUse;
 import com.ObliviscorPart.Items.WrenchItem;
 import com.is.ISConst;
 import com.is.items.CharmOfLuckItem;
+import com.is.items.CircularAttackItem;
 import com.is.items.StoneStyletItem;
 import com.is.items.MagazineItem;
 import com.is.items.RandomFoodItem;
@@ -32,5 +33,6 @@ public class ModItems {
     public static final RegistryObject<Item> FANZIA_AMULET = ITEMS.register("fanzia_amulet", FanziaAmuletOnUse::new);
     public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", WrenchItem::new);
     public static final RegistryObject<Item> STONE_STYLET_ITEM = ITEMS.register("stone_stylet", StoneStyletItem::new);
+    public static final RegistryObject<Item> CIRCULAR_ATTACK_SWORD = ITEMS.register("circular_attack_sword", CircularAttackItem::new);
 
 }
