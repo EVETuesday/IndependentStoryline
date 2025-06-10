@@ -40,7 +40,6 @@ public final class CommonEnhancedBossEventManager extends SavedData {
     }
 
     public static CommonEnhancedBossEventManager load(CompoundTag tag) {
-        System.out.println("dksaldkasl;dkl;asfddddd " + tag);
         CommonEnhancedBossEventManager data = getInstance();
         for (String key : tag.getAllKeys()) {
             UUID id = UUID.fromString(key);
@@ -62,7 +61,6 @@ public final class CommonEnhancedBossEventManager extends SavedData {
 
     @Override
     public @NotNull CompoundTag save(@NotNull CompoundTag compoundTag) {
-        System.out.println("dksaldkasl;dkl;as");
         for (CommonEnhancedBossEvent bossEvent : getAllBossBars()) {
             CompoundTag bossEventTag = new CompoundTag();
             bossEventTag.putString("name", Component.Serializer.toJson(bossEvent.getName()));
@@ -125,6 +123,10 @@ public final class CommonEnhancedBossEventManager extends SavedData {
         event.setMaxValue(entity.getMaxHealth());
         event.setValue(entity.getHealth());
         add(event);
+    }
+
+    public void unbindEntity(LivingEntity entity) {
+        remove(entity.getUUID());
     }
 
     private void updateBossBarFromEntity(LivingEntity entity, float newHp) {

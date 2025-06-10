@@ -84,6 +84,7 @@ public class ClientAbilityManager implements IAbilityManager {
             level.addParticle(ParticleTypes.TOTEM_OF_UNDYING, pos.x + random.nextDouble() - 0.5, pos.y + random.nextDouble() - 0.5, pos.z + random.nextDouble() - 0.5, 0.1, 0.1, 0.1);
         }
 
+        Minecraft.getInstance().player.sendSystemMessage(item.message.apply(Minecraft.getInstance().player));
         Minecraft.getInstance().gameRenderer.displayItemActivation(item.item.get());
         Minecraft.getInstance().gui.setTitle(Component.literal(" "));
         Minecraft.getInstance().gui.setSubtitle(Component.literal("Получен новый предмет").withStyle(Style.EMPTY.withColor(AbilitiesShopScreen.BASE_COLOR)));
