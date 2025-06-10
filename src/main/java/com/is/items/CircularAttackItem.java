@@ -22,7 +22,7 @@ import java.util.List;
 
 public class CircularAttackItem extends SwordItem {
     public CircularAttackItem() {
-        super(Tiers.DIAMOND, 3, -2.4F, new Properties().tab(ISConst.modCreativeTab));
+        super(Tiers.DIAMOND, 4, -2.4F, new Properties().tab(ISConst.modCreativeTab));
     }
 
     @Override
