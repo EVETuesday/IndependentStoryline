@@ -28,7 +28,7 @@ public class StoneStyletItem extends Item implements IItemWithTooltip  {
             projectile.setPos(player.getX(), player.getEyeY() - 0.1, player.getZ());
 
             Vec3 look = player.getLookAngle();
-            projectile.shoot(look.x, look.y, look.z, 1.5F, 0.5F);
+            projectile.shoot(look.x, look.y, look.z, 1.0F, 0.1F);
 
             level.addFreshEntity(projectile);
         }
