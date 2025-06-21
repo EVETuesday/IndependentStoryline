@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "is_hidden": false,
+  "pattern": [
+    "i i",
+    " i ",
+    " i "
+  ],
+  "key": {
+    "i": [
+      {
+        "item": "minecraft:iron_ingot"
+      }
+    ]
+  },
+  "result": {
+    "item": "independent_storyline:wrench",
+    "count": 1
+  }
+}

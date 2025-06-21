@@ -1,9 +1,12 @@
 package com.is.items;
 
 import com.is.ISConst;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -16,7 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Map;
 
-public class RandomFoodItem extends Item {
+import java.util.List;
+
+public class RandomFoodItem extends Item implements IItemWithTooltip {
 
     public RandomFoodItem() {
         super(
@@ -33,6 +38,11 @@ public class RandomFoodItem extends Item {
                                         .meat().build()
                         )
         );
+
+    }
+    @Override
+    public List<Component> getTooltip(ItemStack itemStack, Player player) {
+        return ISConst.generateMagicItemDescription(itemStack, player, "random_food");
     }
 
     public @NotNull ItemStack finishUsingItem(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pLivingEntity) {

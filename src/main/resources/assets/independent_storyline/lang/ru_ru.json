@@ -31,13 +31,18 @@
   "item.independent_storyline.magazine_item": "Журнал",
   "itemGroup.IndependentStorylineTab": "НСЛ",
 
-  "is.item.charm_of_luck.magic_description": "Описание без шифта",
-  "is.item.charm_of_luck.description.1": "Способность 1",
-  "is.item.charm_of_luck.description.2": "Способность 2",
+  "is.item.charm_of_luck.magic_description": "",
+  "is.item.charm_of_luck.description.1": "Данный амулет увеличит на 30 секунд количество получаемых дельфов в два раза, но активируется с шансом 15%.",
+  "is.item.charm_of_luck.description.2": "Перезарядка амулета: 15 секунд.",
+
+  "is.item.random_food.magic_description": "",
+  "is.item.random_food.description.1": "Когда Вы ее съедите, то на вас наложится случайный эффект, он может быть как положительным, так и отрицательным.",
+
+  "is.item.magazine_item.magic_description": "",
+  "is.item.magazine_item.description.1": "Создателем данной газеты является неизвестная группа повстанцев этого мира.",
 
   "is.item.abilities": "§l§b§kD§r§2§lСпособности§r§l§b§kD",
   "is.item.shift_for_desc": "Нажмите Shift для описания способностей",
-  "itemGroup.IndependentStorylineTab": "НСЛ",
 
   "item.independent_storyline.alfia_amulet": "Амулет Альфии",
   "is.item.alfia_amulet.magic_description": "Амулет повстанца по имени Альфия.",

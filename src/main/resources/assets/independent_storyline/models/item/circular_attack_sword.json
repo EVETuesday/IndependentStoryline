@@ -1,0 +1,6 @@
+{
+	"parent": "item/stone_sword",
+	"textures": {
+		"layer0": "independent_storyline:item/circular_attack_sword"
+	}
+}

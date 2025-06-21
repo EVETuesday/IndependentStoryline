@@ -24,11 +24,14 @@ public class LegendarySwordItemUse extends SwordItem implements IItemWithTooltip
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected){
         if (!pLevel.isClientSide)
         {
-            Player player = pEntity.level.getNearestPlayer(pEntity,1);
-            if (pIsSelected)
-            {
-                player.addEffect(new MobEffectInstance(MobEffects.JUMP,10,1, false, false));
-            }
+            try {
+                Player player = pEntity.level.getNearestPlayer(pEntity,1);
+                if (pIsSelected)
+                {
+                    player.addEffect(new MobEffectInstance(MobEffects.JUMP,10,1, false, false));
+                }
+            } catch (Exception e) {}
+
         }
     }
 
