@@ -1,11 +1,20 @@
 package com.is.items;
 
 import com.is.ISConst;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Map;
 
 public class RandomFoodItem extends Item {
 
@@ -20,11 +29,33 @@ public class RandomFoodItem extends Item {
                                 new FoodProperties.Builder()
                                         .nutrition(3)
                                         .saturationMod(0.3F)
-                                        .meat()
-                                        .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20 * 60 * 2, 2, false, false), .5f)
-                                        .effect(() -> new MobEffectInstance(MobEffects.JUMP, 20 * 60 * 2, 2, false, false), .5f)
-                                        .effect(() -> new MobEffectInstance(MobEffects.POISON, 20 * 60, 2, false, false), .1f).build()
+                                        .alwaysEat()
+                                        .meat().build()
                         )
         );
     }
+
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pLivingEntity) {
+        if (!pLevel.isClientSide()) {
+            boolean isBadEffect = ISConst.RANDOM.nextFloat() < .2f;
+
+            List<MobEffect> effects = ForgeRegistries.MOB_EFFECTS.getEntries().stream()
+                    .filter(mobEffect -> mobEffect.getKey().location().getNamespace().equals("minecraft")) // only vanilla effects
+                    .map(Map.Entry::getValue)
+                    .filter(mobEffect -> (isBadEffect && mobEffect.getCategory() == MobEffectCategory.HARMFUL
+                            || !isBadEffect && mobEffect.getCategory() != MobEffectCategory.HARMFUL))
+                    .toList();
+
+
+            if (!effects.isEmpty()) {
+                MobEffect effect = effects.get(ISConst.RANDOM.nextInt(effects.size()));
+
+                MobEffectInstance effectInstance = new MobEffectInstance(effect, isBadEffect ? 200 : 600, isBadEffect ? 1 : 2);
+                pLivingEntity.addEffect(effectInstance);
+            }
+        }
+
+        return this.isEdible() ? pLivingEntity.eat(pLevel, pStack) : pStack;
+    }
+
 }

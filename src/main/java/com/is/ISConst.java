@@ -15,11 +15,14 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public final class ISConst {
 
     private ISConst() {
     }
+
+    public static final Random RANDOM = new Random();
 
     public static final String MODID = "independent_storyline";
 
